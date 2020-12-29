@@ -2,6 +2,8 @@
 title = "solo.rb"
 draft = false
 
+gh_repo = "chef-web-docs"
+
 aliases = ["/config_rb_solo.html"]
 
 [menu]
@@ -11,8 +13,6 @@ aliases = ["/config_rb_solo.html"]
     parent = "chef_infra/features/chef_solo"
     weight = 30
 +++
-
-[\[edit on GitHub\]](https://github.com/chef/chef-web-docs/blob/master/content/config_rb_solo.md)
 
 A solo.rb file is used to specify the configuration details for
 chef-solo.
@@ -106,7 +106,7 @@ This configuration file has the following settings:
 
 `node_name`
 
-:   The name of the node.
+:   The unique identifier of the node.
 
 `recipe_url`
 
@@ -172,7 +172,7 @@ certificate (located under `/var/opt/delivery/nginx/` on the Chef
 Automate server) to your `trusted_certs_dir` directory, as seen in this
 example:
 
-``` ruby
+```ruby
 chef_server_url  "https://localhost:8989"
 log_location   STDOUT
 node_name "YOUR_NODES_FQDN"
@@ -185,7 +185,7 @@ data_collector.token = "YOURTOKEN"
 
 You can run it like this
 
-``` ruby
+```ruby
 chef-solo -c solo.rb
 ```
 
@@ -194,7 +194,7 @@ chef-solo -c solo.rb
 A sample solo.rb file that contains all possible settings (listed
 alphabetically):
 
-``` ruby
+```ruby
 add_formatter :nyan
 add_formatter :foo
 add_formatter :bar

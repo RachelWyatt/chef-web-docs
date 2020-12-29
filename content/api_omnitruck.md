@@ -2,6 +2,8 @@
 title = "Omnitruck API"
 draft = false
 
+gh_repo = "chef-web-docs"
+
 aliases = ["/api_omnitruck.html"]
 
 [menu]
@@ -12,8 +14,6 @@ aliases = ["/api_omnitruck.html"]
     weight = 50
 +++
 
-[\[edit on GitHub\]](https://github.com/chef/chef-web-docs/blob/master/content/api_omnitruck.md)
-
 Chef's Omnitruck API powers the Chef Software Install script as well as
 downloads.chef.io site. It can be used to query available versions of
 Chef Software Inc. products and to provide direct download URLs.
@@ -23,13 +23,13 @@ Chef Software Inc. products and to provide direct download URLs.
 The URL from which these downloads can be obtained has the following
 syntax:
 
-``` none
+```none
 https://omnitruck.chef.io/<CHANNEL>/<PRODUCT>/download?p=$PLATFORM&pv=$PLATFORM_VERSION&m=$MACHINE_ARCH&v=latest&prerelease=false&nightlies=false
 ```
 
 or:
 
-``` none
+```none
 https://omnitruck.chef.io/<CHANNEL>/<PRODUCT>/metadata?p=$PLATFORM&pv=$PLATFORM_VERSION&m=$MACHINE_ARCH&v=latest&prerelease=false&nightlies=false
 ```
 
@@ -43,13 +43,13 @@ single step.
 The `/metadata` and/or `/download` endpoints can be used to download
 packages for all products:
 
-``` none
+```none
 https://omnitruck.chef.io/<CHANNEL>/<PRODUCT>/download?p=$PLATFORM&pv=$PLATFORM_VERSION&m=$MACHINE_ARCH&v=latest
 ```
 
 or:
 
-``` none
+```none
 https://omnitruck.chef.io/<CHANNEL>/<PRODUCT>/metadata?p=$PLATFORM&pv=$PLATFORM_VERSION&m=$MACHINE_ARCH&v=latest
 ```
 
@@ -138,7 +138,7 @@ Omnitruck accepts the following platforms:
 <td>macOS</td>
 <td><code>mac_os_x</code></td>
 <td><code>x86_64</code></td>
-<td><code>10.6</code>, <code>10.7</code>, <code>10.8</code>, <code>10.9</code>, <code>10.10</code>, <code>10.11</code>, <code>10.12</code>, <code>10.13</code>, <code>10.14</code>, <code>10.15</code></td>
+<td><code>10.6</code>, <code>10.7</code>, <code>10.8</code>, <code>10.9</code>, <code>10.10</code>, <code>10.11</code>, <code>10.12</code>, <code>10.13</code>, <code>10.14</code>, <code>10.15</code>, <code>11.0</code></td>
 </tr>
 <tr class="even">
 <td>Solaris</td>
@@ -179,13 +179,13 @@ Omnitruck accepts the following platforms:
 
 To get the latest supported build for Ubuntu 20.04, enter the following:
 
-``` none
+```none
 https://omnitruck.chef.io/stable/chef/metadata?p=ubuntu&pv=20.04&m=x86_64
 ```
 
 to return something like:
 
-``` none
+```none
 sha1 b56f0ebce281d360613ee4f8ca8ce654e915d726
 sha256 d28696b523eaa1040f5c17693fc102e2c22a9ecc0e1296284f9c610e250eb66c
 url https://packages.chef.io/files/stable/chef/16.0.257/ubuntu/20.04/chef_16.0.257-1_amd64.deb
@@ -196,12 +196,12 @@ version 16.0.257
 
 To use cURL to download a package directly, enter the following:
 
-``` bash
+```bash
 curl -LOJ 'https://omnitruck.chef.io/<CHANNEL>/<PRODUCT>/download?p=debian&pv=10&m=x86_64'
 ```
 
 To use GNU Wget to download a package directly, enter the following:
 
-``` bash
+```bash
 wget --content-disposition https://omnitruck.chef.io/<CHANNEL>/<PRODUCT>/download?p=debian&pv=10&m=x86_64
 ```

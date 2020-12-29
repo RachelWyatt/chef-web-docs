@@ -1,6 +1,8 @@
 +++
 title = "Authentication for Elasticsearch and Kibana"
 draft = false
+
+gh_repo = "chef-web-docs"
 robots = "noindex"
 
 
@@ -13,8 +15,6 @@ aliases = ["/elasticsearch_and_kibana_auth.html"]
     parent = "legacy/workflow/managing_workflow"
     weight = 140
 +++
-
-[\[edit on GitHub\]](https://github.com/chef/chef-web-docs/blob/master/content/elasticsearch_and_kibana_auth.md)
 
 {{% chef_automate_mark %}}
 
@@ -71,7 +71,7 @@ CLI](/delivery_cli/).
 
 For example, to pass the required headers using curl:
 
-``` bash
+```bash
 curl https://my-automate-server.mycompany.biz/elasticsearch/_cat/indices -H "chef-delivery-user: myuser" -H "chef-delivery-enterprise: coolcompany" -H "chef-delivery-token: s00pers33krett0ken"
 ```
 

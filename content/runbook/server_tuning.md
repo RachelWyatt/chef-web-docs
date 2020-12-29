@@ -2,6 +2,8 @@
 title = "Server Tuning"
 draft = false
 
+gh_repo = "chef-web-docs"
+
 aliases = ["/server_tuning.html"]
 
 runbook_weight = 60
@@ -13,8 +15,6 @@ runbook_weight = 60
     parent = "chef_infra/managing_chef_infra_server"
     weight = 110
 +++
-
-[\[edit on GitHub\]](https://github.com/chef/chef-web-docs/blob/master/content/runbook/server_tuning.md)
 
 The server configuration file contains a list of all configuration
 options that are available for the Chef Infra Server. Some of these
@@ -65,26 +65,6 @@ Chef Infra Server in larger installations.
 ### opscode-erchef
 
 {{% server_tuning_erchef %}}
-
-### opscode-expander
-
-{{% server_tuning_expander %}}
-
-### opscode-solr4
-
-{{% server_tuning_solr %}}
-
-#### Available Memory
-
-{{% server_tuning_solr_available_memory %}}
-
-#### Large Node Sizes
-
-{{% server_tuning_solr_large_node_sizes %}}
-
-#### Update Frequency
-
-{{% server_tuning_solr_update_frequency %}}
 
 ### postgresql
 

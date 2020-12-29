@@ -1,22 +1,20 @@
 +++
 title = "manage.rb"
 draft = false
+
+gh_repo = "chef-web-docs"
 robots = "noindex"
 
 
 aliases = ["/config_rb_manage.html"]
 
 [menu]
-  [menu.infra]
+  [menu.legacy]
     title = "manage.rb"
-    identifier = "chef_infra/features/management_console/config_rb_manage.md manage.rb"
-    parent = "chef_infra/features/management_console"
+    identifier = "legacy/manage/config_rb_manage.md manage.rb"
+    parent = "legacy/manage"
     weight = 100
 +++
-
-[\[edit on GitHub\]](https://github.com/chef/chef-web-docs/blob/master/content/config_rb_manage.md)
-
-
 
 {{% chef_automate_mark %}}
 
@@ -39,7 +37,7 @@ The configuration file is located at: `/etc/chef-manage/manage.rb`.
 All of the following settings should be specified without using the
 equals symbol (`=`). For example:
 
-``` ruby
+```ruby
 chef_documentation_url 'https://docs.chef.io'
 ```
 
@@ -83,7 +81,7 @@ This configuration file has the following settings:
 
 `max_login_failures`
 
-:   The the maximim number of failed login attempts allowed before the
+:   The the maximum number of failed login attempts allowed before the
     user must use the password reset link to reset their password (has
     no effect when using external authentication/LDAP). Default value:
     `7`.
@@ -261,7 +259,7 @@ is stored without any additional steps.
 
 To verify that the key is stored and ready to use by manage, run:
 
-``` bash
+```bash
 chef-server-ctl show-secret chef-server webui_key
 -----BEGIN RSA PRIVATE KEY-----
 MIIEpgIBAAKCAQEA3fJ+U+5prsJ8PtnbYzWAq+J2cE48u+iT7t/M9JS+3tlEgf3r
@@ -275,7 +273,7 @@ MIIEpgIBAAKCAQEA3fJ+U+5prsJ8PtnbYzWAq+J2cE48u+iT7t/M9JS+3tlEgf3r
 The following example shows how the settings look when added to the
 configuration file:
 
-``` ruby
+```ruby
 chef_documentation_url ''
 disable_sign_up false
 events.port 11001

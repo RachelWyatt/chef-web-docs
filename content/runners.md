@@ -1,6 +1,8 @@
 +++
 title = "Runners"
 draft = false
+
+gh_repo = "chef-web-docs"
 robots = "noindex"
 
 
@@ -13,10 +15,6 @@ aliases = ["/runners.html", "/job_dispatch.html"]
     parent = "legacy/workflow/managing_workflow"
     weight = 60
 +++
-
-[\[edit on GitHub\]](https://github.com/chef/chef-web-docs/blob/master/content/runners.md)
-
-
 
 Chef Automate's workflow engine automatically creates phase jobs as
 project code is promoted through the phases of a workflow pipeline.
@@ -87,13 +85,13 @@ Runner can also be removed using the `delivery-cli-api` command.
 
 To see a list of runners:
 
-``` bash
+```bash
 delivery api get runners
 ```
 
 To delete a runner:
 
-``` bash
+```bash
 delivery api delete runners/<runner_hostname>
 ```
 
@@ -118,7 +116,7 @@ Jobs-based build nodes, you must edit the file in the following manner:
 
 At the bare minimum, you must set the version to v2:
 
-``` javascript
+```javascript
 {
    ...
    "job_dispatch": {
@@ -130,7 +128,7 @@ At the bare minimum, you must set the version to v2:
 
 and remove the `build_nodes` setting from `config.json`.
 
-``` none
+```none
 "build_nodes": {
   "default"    : ["name:name_of_builder"]
 },
@@ -154,7 +152,7 @@ the change view for the job you wish to cancel.
 
 ## Managing and Inspecting Jobs
 
-You can see the job queue, runnning jobs, what your runners are
+You can see the job queue, running jobs, what your runners are
 currently doing, runner health, and so on. Navigate to <span
 class="title-ref">Workflow -\> Runners</span> in the UI to see all the
 possibilities.

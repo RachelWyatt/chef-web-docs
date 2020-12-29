@@ -2,17 +2,17 @@
 title = "About the Handler DSL"
 draft = false
 
+gh_repo = "chef-web-docs"
+
 aliases = ["/dsl_handler.html"]
 
 [menu]
-  [menu.api]
+  [menu.infra]
     title = "Handler DSL"
-    identifier = "extension_apis/handlers/dsl_handler.md Handler DSL"
-    parent = "extension_apis/handlers"
+    identifier = "chef_infra/extension_apis/handlers/dsl_handler.md Handler DSL"
+    parent = "chef_infra/extension_apis/handlers"
     weight = 20
 +++
-
-[\[edit on GitHub\]](https://github.com/chef/chef-web-docs/blob/master/content/dsl_handler.md)
 
 {{% dsl_handler_summary %}}
 
@@ -57,10 +57,10 @@ The following examples show ways to use the Handler DSL.
 In a cookbook library file, you can add this in order to print out all
 attribute changes in cookbooks:
 
-``` ruby
+```ruby
 Chef.event_handler do
   on :attribute_changed do |precedence, key, value|
-    puts "setting attribute #{precedence}#{key.map {|n| "[\"#{n}\"]" }.join} = #{value}"
+    puts "setting attribute #{precedence}#{key.map { |n| "[\"#{n}\"]" }.join} = #{value}"
   end
 end
 ```
@@ -68,10 +68,10 @@ end
 If you want to setup a policy that override attributes should never be
 used:
 
-``` ruby
+```ruby
 Chef.event_handler do
   on :attribute_changed do |precedence, key, value|
-    raise "override policy violation" if precedence == :override
+    raise 'override policy violation' if precedence == :override
   end
 end
 ```

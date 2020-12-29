@@ -2,6 +2,8 @@
 title = "Chef Infra Client Overview"
 draft = false
 
+gh_repo = "chef-web-docs"
+
 aliases = ["/chef_client_overview.html", "/chef_client.html"]
 
 [menu]
@@ -11,8 +13,6 @@ aliases = ["/chef_client_overview.html", "/chef_client.html"]
     parent = "chef_infra/concepts"
     weight = 10
 +++
-
-[\[edit on GitHub\]](https://github.com/chef/chef-web-docs/blob/master/content/chef_client_overview.md)
 
 {{< note >}}
 
@@ -30,8 +30,8 @@ executable can be run as a daemon.
 <tbody>
 <tr class="odd">
 <td><p><img src="/images/icon_chef_client.svg" class="align-center" width="100" alt="image" /></p></td>
-<td><p>{{% chef_client_summary %}}</p>
-<p>{{% security_key_pairs_chef_client %}}</p></td>
+<td><p>{{< readFile_shortcode file="chef_client_summary.md" >}}</p>
+<p>{{< readFile_shortcode file="security_key_pairs_chef_client.md" >}}</p></td>
 </tr>
 </tbody>
 </table>
@@ -43,7 +43,7 @@ executable can be run as a daemon.
 ## Related Content
 
 -   [Chef Infra Client (executable)](/ctl_chef_client/)
--   [Chef Infra Server](/server_overview/)
+-   [Chef Infra Server](/server/)
 -   [Cookbooks](/cookbooks/)
 -   [Nodes](/nodes/)
 -   [Run Lists](/run_lists/)

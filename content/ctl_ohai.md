@@ -2,6 +2,8 @@
 title = "ohai (executable)"
 draft = false
 
+gh_repo = "chef-web-docs"
+
 aliases = ["/ctl_ohai.html"]
 
 [menu]
@@ -11,8 +13,6 @@ aliases = ["/ctl_ohai.html"]
     parent = "chef_infra/features/ohai"
     weight = 20
 +++
-
-[\[edit on GitHub\]](https://github.com/chef/chef-web-docs/blob/master/content/ctl_ohai.md)
 
 {{% ctl_ohai_summary %}}
 
@@ -31,7 +31,7 @@ First, ensure that the plugin is located in the `/plugins` directory and
 then use the `-f` option when running Ohai from the command line. For
 example, a plugin named `sl_installed` may look like the following:
 
-``` ruby
+```ruby
 Ohai.plugin(:Sl) do
   provides "sl"
 
@@ -52,13 +52,13 @@ end
 
 To run that plugin from the command line, use the following command:
 
-``` bash
+```bash
 ohai --directory /path/to/directory sl
 ```
 
 The command will return something similar to:
 
-``` javascript
+```javascript
 {
   "sl": {
     "installed": true

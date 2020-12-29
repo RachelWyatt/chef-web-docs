@@ -2,6 +2,8 @@
 title = "Platform Overview"
 draft = false
 
+gh_repo = "chef-web-docs"
+
 aliases = ["/platform_overview.html"]
 
 [menu]
@@ -11,8 +13,6 @@ aliases = ["/platform_overview.html"]
     parent = "overview"
     weight = 10
 +++
-
-[\[edit on GitHub\]](https://github.com/chef/chef-web-docs/blob/master/content/platform_overview.md)
 
 Chef is an automation company. Ever since it was founded in 2008, we've
 been bringing together developers and system administrators with our
@@ -123,13 +123,13 @@ To get a sense of how the Chef InSpec language works, here are some
 examples. This Chef InSpec rule ensures that insecure services and
 protocols, such as telnet, are not used.
 
-``` ruby
+```ruby
 describe package('telnetd') do
- it { should_not be_installed }
+  it { should_not be_installed }
 end
 
 describe inetd_conf do
- its("telnet") { should eq nil }
+  its('telnet') { should eq nil }
 end
 ```
 
@@ -165,7 +165,7 @@ security frameworks, such as Center for Internet Security (CIS)
 benchmarks, included as part of Chef Automate.
 
 For information on the integrated reporting capabilities in Chef
-Automate, see [Compliance Overview](/chef_automate_compliance/).
+Automate, see [Compliance Overview](/automate/reports/).
 
 ### High availability
 
@@ -174,10 +174,8 @@ tolerance, immediately consistent search results, and accurate real-time
 data about your infrastructure. Chef Automate also provides a graphical
 management console for the Chef Infra Server.
 
-## More Resources
+## Learning More
 
 If you're interested in getting hands-on experience, go to
 <https://learn.chef.io/> for tutorials, information about formal
-training classes and community resources. The Chef Habitat web site at
-<https://www.habitat.sh/> has Habitat tutorials, along with
-documentation and other resources.
+training classes and community resources.

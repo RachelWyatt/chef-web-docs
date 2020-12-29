@@ -2,6 +2,8 @@
 title = "Active Directory and LDAP"
 draft = false
 
+gh_repo = "chef-web-docs"
+
 aliases = ["/server_ldap.html", "/install_server_post.html"]
 
 [menu]
@@ -12,12 +14,10 @@ aliases = ["/server_ldap.html", "/install_server_post.html"]
     weight = 50
 +++
 
-[\[edit on GitHub\]](https://github.com/chef/chef-web-docs/blob/master/content/server_ldap.md)
-
 The Chef Infra Server supports Active Directory and LDAP authentication,
 which enables users to log in to the Chef Infra Server using their
 corporate credential and the Manage interface. Without the Manage interface add-on installed,
-there is no need to enable the Chef Infra Server LDAP functionality. LDAP is not used with 
+there is no need to enable the Chef Infra Server LDAP functionality. LDAP is not used with
 Supermarket logins, nor with any Chef Infra Client related authentication.
 
 ## Configure LDAP
@@ -55,7 +55,7 @@ the following:
     Availability installation as well as on Chef servers in a standalone
     installation.
 
-    {{< shortcode_indent shortcode="config_rb_server_settings_ldap" >}}
+    {{< readFile_shortcode file="config_rb_server_settings_ldap.md" >}}
 
     {{< note spaces=4 >}}
 
@@ -64,7 +64,7 @@ the following:
 
     {{< /note >}}
 
-3.  {{< shortcode_indent shortcode="install_chef_server_reconfigure" >}}
+3.  {{< readFile_shortcode file="install_chef_server_reconfigure.md" >}}
 
 At this point, all users should be able to use their Active Directory or
 LDAP usernames and passwords to log in to the Chef Infra Server.
@@ -115,19 +115,19 @@ configuration) or from the Chef Infra Server in a standalone
 configuration, run the following command. Be sure to replace the
 uppercase placeholders with the values for your organization:
 
-``` bash
+```bash
 ldapsearch -LLL -H ldap://HOST:PORT -b 'BASE_DN' -D 'BIND_DN' -W '(LOGIN_ATTRIBUTE=YOUR_LDAP_ACCOUNT_USERNAME)'
 ```
 
 For example:
 
-``` bash
+```bash
 ldapsearch -LLL -H ldap://win-ad1.chef.co:389 -b 'OU=Employees,OU=Domain users,DC=opscodecorp,DC=com' -D 'CN=Robert Forster,OU=Employees,OU=Domain users,DC=opscodecorp,DC=com' -W '(sAMAccountName=rforster)'
 ```
 
 Output similar to the following is returned:
 
-``` bash
+```bash
 ldapsearch -LLL -H ldap://win-ad1.chef.co:389 -b 'OU=Employees,OU=Domain users,DC=opscodecorp,DC=com' -D 'CN=Robert Forster,OU=Employees,OU=Domain users,DC=opscodecorp,DC=com' -W '(sAMAccountName=rforster)'
 Enter LDAP Password:
 

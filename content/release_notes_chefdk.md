@@ -1,22 +1,271 @@
 +++
-title = "Release Notes: ChefDK 0.19 - 4.8"
+title = "Release Notes: ChefDK 0.19 - 4.13"
 draft = false
 
+gh_repo = "chef-web-docs"
+
 aliases = ["/release_notes_chefdk.html"]
-
-[menu]
-  [menu.infra]
-    title = "ChefDK"
-    identifier = "chef_infra/release_notes/release_notes_chefdk.md ChefDK"
-    parent = "chef_infra/release_notes"
-    weight = 20
 +++
-
-[\[edit on GitHub\]](https://github.com/chef/chef-web-docs/blob/master/content/release_notes_chefdk.md)
 
 This page documents the ChefDK major changes for each release. For
 a detailed list of changes, see the [ChefDK Changelog on
 GitHub](https://github.com/chef/chef-dk/blob/master/CHANGELOG.md)
+
+## What's New In ChefDK 4.13
+
+Note: ChefDK will enter the end-of-life product phase on Dec 31st 2020. The 4.13 release of ChefDK is the last planned release and all users should upgrade to Chef Workstation, which offers significant improvements to all included tools.
+
+### Package Updates
+
+ChefDK packages are no longer produced for Debian 8 and RHEL/CentOS 6, as these platforms are now both EOL.
+
+### Updated Components
+
+#### Test Kitchen
+
+Test Kitchen was updated from 2.7.2 to 2.8.0. This release improves how we execute commands on Windows hosts in order to avoid failures from executing commands that are too long for the windows command line. Thanks for this fix [@ramereth](https://github.com/ramereth)!
+
+#### Kitchen Google
+
+The Kitchen Google driver for Test Kitchen was updated from 2.0.3 to 2.1.0. This release adds a new network_ip config for an IPv4 internal IP address to assign to the instance. The driver automatically assigns an unused internal IP to an unconfigured network_ip. Thanks [@eReGeBe](https://github.com/eReGeBe) for this new feature!
+
+#### Kitchen Vagrant
+
+The kitchen-vagrant plugin is updated from version 1.7.1 to 1.7.2 with a bug fix to no longer stop with an error when updating a Vagrant box that has not yet been downloaded.
+
+#### Kitchen Dokken
+
+Kitchen Dokken has been updated to 2.11.2 to resolve failures from creating containers during the Test Kitchen converge. Thanks for reporting this issue [@emeshuris](https://github.com/emeshuris)!
+
+#### Chef InSpec
+
+Chef InSpec has been updated to 4.24.8, which includes the following improvements:
+
+- An unset `HOME` environment variable will not cause execution failures
+- You can use wildcards in `platform-name` and `release` in InSpec profiles. Thanks for this improvement [@yarick](https://github.com/yarick)!
+- The `WMI` resource now returns an array to support returning multiple WMI objects
+- The `package` resource on Windows properly escapes package names. Thanks for this improvement [@ramereth](https://github.com/ramereth)!
+- The `grub_conf` resource succeeds even if without a `menuentry` in the grub config
+- Loaded plugins won't try to re-load themselves
+- Waiver expiration is now always populated
+
+#### chef-vault
+
+Chef Vault has been updated to version 4.1, which properly handles escape strings in secrets and greatly improves performance for users with large numbers of secrets. Thanks for the performance work [@Annih](https://github.com/Annih)!
+
+#### knife-ec2
+
+The knife-ec2 plugin has been updated to 2.1.0, which allows for the creation of instances with ST1 or SC1 EBS volume types
+
+### Security
+
+#### openSSL
+
+The openSSL library has been updated to 1.0.2x to resolve [CVE-2020-1971](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-1971).
+
+## What's New In ChefDK 4.12
+
+### Updates Components
+
+#### Chef InSpec
+
+InSpec has been updated from 4.22.22 to 4.23.11. This release includes a `--no-diff` CLI option to suppress diff output for textual tests, a `--sort_results_by` CLI option to sort control output, and implements a sensitive mechanism to hide sensitive output.
+
+#### kitchen-azurerm
+
+The `kitchen-azurerm` plugin has been updated from 1.3.0 to 1.4.0. This release includes multiple bug fixes, as well as a new `use_fqdn_hostname` config option that forces using the instance's FQDN for all communication.
+
+#### kitchen-dokken
+
+The `kitchen-dokken` plugin has been updated from 2.10.0 to 2.11.0. This release works with newer Docker API releases and resolves Ruby 2.7 compatibility warnings.
+
+#### kitchen-ec2
+
+The `kitchen-ec2` plugin has been updated from 3.7.1 to 3.8.0. This release now avoids beta releases of Red Hat when searching for AMIs to converge, allows multiple IP addresses to be specified when creating a security group, and fixes `block_duration_minutes` when creating spot instances.
+
+#### kitchen-inspec
+
+The `kitchen-inspec` plugin has been updated from 2.0.0 to 2.2.1. This release includes the ability to disable input caching in InSpec, as well as a fix for using the `junit` reporter under Test Kitchen.
+
+#### Test Kitchen
+
+Test Kitchen has been updated from 2.7.0 to 2.7.2. This release marks the legacy `chef_solo` provisioner as unsafe for concurrency and includes various performance optimizations.
+
+#### knife-opc
+
+The `knife-opc` plugin has been updated from 0.4.6 to 0.4.7. This release includes a new `--all-info` flag for use with the `knife opc user list` command. This flag provides additional details on each listed user:
+
+```
+antima_gupta:
+  display_name: Antima Gupta
+  email:        agupta@example.com
+  first_name:   Antima
+  last_name:    Gupta
+pivotal:
+  display_name: Chef Server Superuser
+  email:        root@localhost.localdomain
+  first_name:   Chef
+  last_name:    Server
+```
+
+#### knife-ec2
+
+The `knife-ec2` plugin has been updated from 2.0.4 to 2.0.6. This release fixes an error that would occur when using the `--server-connect-attribute private_ip_address` flag.
+
+#### chef-vault
+
+The `chef-vault` gem has been updated from 4.0.11 to 4.0.12. This release fixes `vault show -F json` and `knife vault list -F json` displaying invalid JSON.
+
+## What's New In ChefDK 4.11
+
+### Knife Improvements
+
+We've reworked how the knife command loads dependencies to greatly improve performance. For some users this may result in a 2/3 reduction in the time knife commands take to load the first time. We also fixed the `knife ssh` command hanging when connecting to Windows nodes over SSH.
+
+### Updates Components
+
+#### Chef Infra Client
+
+Chef Infra Client has been updated from 15.13.8 to 15.14.0, with a large number of improvements to built-in Chef Infra resources.
+
+#### Chef InSpec
+
+Chef InSpec has been updated from 4.22.1 to 4.22.22. This new release includes the following improvements:
+
+- Fix mysql_session stdout, stderr, and exit_status parameters. Thanks [@ramereth](https://github.com/ramereth)!
+- Add new windows_firewall and windows_firewall_rule resources. Thanks [@tecracer-theinen](https://github.com/tecracer-theinen)!
+
+#### Chef Vault
+
+Chef Vault has been updated from 4.0.1 to 4.0.11. This release resolves errors when running some knife vault commands and improves how it handles command inputs.
+
+#### Test Kitchen
+
+Test Kitchen has been updated from 2.5.4 to 2.7.0, which adds the ability to mark plugins as unable to run with a concurrency (`-c`) level greater than 1. This will help prevent strange failures that occur with some plugins which cannot run concurrently in the future.
+
+#### Kitchen AzureRM
+
+Kitchen AzureRM has been updated from 1.0.0 to 1.3.0. This release includes:
+
+- Support for deletion or preservation of resource group tags with a new `destroy_explicit_resource_group_tags` config that defaults to true.
+- Default password generation increased to 25 characters to avoid failures on newer Windows releases.
+- Improve performance by loading dependencies only when we need them.
+
+#### Kitchen Vagrant
+
+The `kitchen-vagrant` plugin  has been updated from 1.6.1 to 1.7.0. This release adds new `box_auto_update` and `box_auto_prune` options to pull newer Vagrant base boxes. Thank you [@Stromweld](https://github.com/Stromweld)!
+
+### Platform Packages
+
+- We now produce packages for Apple's upcoming macOS 11 Big Sur release.
+
+### Security
+
+#### OpenSSL
+
+OpenSSL has been updated to 1.0.2w, which includes a fix for [CVE-2020-1968](https://cve.mitre.org/cgi-bin/cvename.cgi?name=2020-1968).
+
+#### CA Root Certificates
+
+The included `cacerts` bundle in Chef Infra Client has been updated to the 7-22-2020 release. This new release removes 4 legacy root certificates and adds 4 additional root certificates.
+
+## What's New In 4.10
+
+### Updates Components
+
+#### Chef Infra Client
+
+Chef Infra Client has been updated from 15.12.2 to 15.3.8. This new release includes a new deprecation warning when resources specify `resource_name` without also specifying `provides` which results in failures on Chef Infra Client 16.2 and later. This release also improves the warning message that occurs when a cookbook includes a resource that is now bundled directly in Chef Infra Client.
+
+#### Chef InSpec
+
+Chef InSpec has been updated from 4.21.3 to 4.22.1:
+
+- The `=` character is now allowed for command line inputs
+- `apt-cdrom` repositories are now skipped when parsing out the list of apt repositories
+- Faulty profiles are now reported instead of causing a crash
+- Improved macOS support in the `service` resource
+
+#### cookbook-omnifetch
+
+cookbook-omnifetch has been updated from 0.9.1 to 0.10.0. This release adds support for Chef Server API v2 so we can support segmentless cookbooks with the Chef CLI and Policyfiles.
+
+#### knife-cloud
+
+knife-cloud has been updated from 4.0.0 to 4.0.2. This release properly supports jump hosts when the bootstrap flags are used.
+
+#### knife-google
+
+knife-google has been updated from 5.0.0 to 5.0.5. This release adds support for all the aliases for new OSes and distributions and removes several EOL distributions.
+
+#### knife-opc
+
+kitchen-opc has been updated from 0.4.4 to 0.4.6. This release fixes several errors that could occur when running `knife opc user edit USERNAME`.
+
+#### kitchen-dokken
+
+kitchen-dokken has been updated from 2.9.0 to 2.10.0. This release adds a `memory_limit` config to set memory usage limits on the container. It also fixes the `multiple_converge` and `enforce_idempotency` configurations so they work correctly.
+
+#### kitchen-ec2
+
+kitchen-ec2 has been updated from 3.7.0 to 3.7.1. This release fixes the default search for CentOS machines to use the official CentOS images and adds support for subnet filtering with spot instances.
+
+### Bug Fixes
+
+- Support for legacy DSA host keys has been restored in `knife ssh` and `knife bootstrap` commands.
+
+## What's New In 4.9
+
+### Updated Components
+
+#### Chef Infra Client
+
+The Chef Infra Client has been updated from 15.11 to 15.12. This release includes a large number of backported improvements to resources from our Chef Infra Client 16 releases. See the [release notes](https://docs.chef.io/release_notes/#whats-new-in-1512) for a complete list of what's new.
+
+#### InSpec
+
+InSpec was updated from 4.19 to 4.21. This new release includes the following improvements:
+
+* Certain substrings within a .toml file no longer cause unexpected crashes.
+* Accurate InSpec CLI input parsing for numeric values and structured data, which were previously treated as strings. Numeric values are cast to an integer or float and YAML or JSON structures are converted to a hash or an array.
+* Suppress deprecation warnings on `inspec exec` with the `--silence-deprecations` option.
+
+#### knife bootstrap
+
+The `knife bootstrap` command has been updated with several fixes and improvements
+
+- knife bootstrap will now warn when bootstrapping a system using a validation key. Users should instead use validatorless bootstrapping with `knife bootstrap` which generates node and client keys using the client key of the user bootstrapping the node. This method is far more secure as an organization-wide validation key does not need to be distributed or rotated. Users can switch to validatorless bootstrapping by removing any `validation_key` entries in their config.rb (knife.rb) file.
+- Resolved an error bootstrapping Linux nodes from Windows hosts
+- Improved information messages during the bootstrap process
+- Bootstrapping will now be done using a single SSH connection improving bootstrap times on high latency network connection.
+
+#### Knife Tidy
+
+Knife Tidy has been updated from 2.0.12 to 2.1.0 which adds support for a `--keep-versions` command line flag. Specifying this keeps a minimum number of versions of each cookbook and defaults to `0`.
+
+#### net-ssh
+
+The `net-ssh` gem which powers `knife ssh` and `knife bootstrap` commands has been updated from 5.2.0 to 6.1.0 which includes the following updates:
+
+- Support empty lines and comments in known_hosts.
+- Add sha2-{256,512}-etm@openssh.com MAC algorithms.
+- curve25519-sha256 support.
+
+#### kitchen-ec2
+
+The Test Kitchen driver kitchen-ec2 has been updated from 3.6.0 to 3.7.0. This new release improves how instances and volumes are tagged to ensure that these are tagged at create time. This resolves failures on AWS accounts that enforced tagging rules on all objects.
+
+#### kitchen-inspec
+
+The Test Kitchen verifier kitchen-inspec has been updated from 1.3.2 to 2.0.0. This new release adds a config option `load_plugins` which can be used to load all InSpec plugins during the Test Kitchen verify phase.
+
+Sample kitchen.yml config:
+
+```yaml
+    verifier:
+      name: inspec
+      load_plugins: true
+```
 
 ## What's New In 4.8
 
@@ -38,7 +287,7 @@ Chef Infra Client has updated from 15.7 to 15.11, which includes improvements to
 
 Chef InSpec has updated from 4.18.51 to 4.19.0. This update includes a large number of fixes to resources and these significant new features:
 
-- You can now develop your own Chef InSpec Reporter plugin and determine how Chef InSpec will report result data. Learn more about Chef InSpec [plugins and implementation](https://www.inspec.io/docs/reference/plugins/) in our documentation
+- You can now develop your own Chef InSpec Reporter plugin and determine how Chef InSpec will report result data. Learn more about Chef InSpec [plugins and implementation](/inspec/plugins/) in our documentation
 - The `inspec archive` command packs your profile into a tar.gz file that includes the profile in JSON form as the `inspec.json` file. Use this JSON file to programmatically examine the profile without needing to load it into Chef InSpec
 - Chef InSpec accepts a variety of date formats in the `waivers.yaml` configuration file, rather than only the `YYYY-MM-DD` format
 - Use the new `inspec` command options to control the size of reports:
@@ -215,7 +464,7 @@ knife-ec2 has been updated from 1.0.17 to 1.0.28 with the following fixes:
 
 - Resolved a missing credential error when using aws-profile.
 - Mask AWS access keys data in any error or debug logs.
-- Resolved ssh_gateway uninitialised error.
+- Resolved ssh_gateway uninitialized error.
 - Fixed invalid format of auto generated keypair file name.
 - Raises an error if password length is less than 8 characters on Windows and will stop warning on passwords over 14 characters.
 
@@ -327,7 +576,7 @@ knife-ec2 has been updated from 1.0.17 to 1.0.28 with the following fixes:
 
 * Resolved a missing credential error when using aws-profile.
 * Mask AWS access keys data in any error or debug logs.
-* Resolved ssh_gateway uninitialised error.
+* Resolved ssh_gateway uninitialized error.
 * Fixed invalid format of auto generated keypair file name.
 * Raises an error if password length is less than 8 characters on Windows and will stop warning on passwords over 14 characters.
 
@@ -421,7 +670,7 @@ need it.
 
 Using with a Windows service that starts, but is not immediately ready:
 
-> ``` ruby
+> ```ruby
 > service 'Service that is slow to start and reports as started' do
 >   service_name 'my_database'
 >   action :start
@@ -453,13 +702,13 @@ since both types of comments will be honored by Cookstyle.
 
 Rubocop comment to disable a cop:
 
-> ``` ruby
+> ```ruby
 > node.normal[:foo] # rubocop: disable ChefCorrectness/Bar
 > ```
 
 Cookstyle comment to disable a cop:
 
-> ``` ruby
+> ```ruby
 > node.normal[:foo] # cookstyle: disable ChefCorrectness/Bar
 > ```
 
@@ -512,7 +761,7 @@ non-T2 type instances.
 kitchen-digitalocean has been updated to 0.10.5 which adds new image
 aliases for `Debian-10` and `FreeBSD-12`.
 
-#### kitchen-dokkken
+#### kitchen-dokken
 
 kitchen-dokken has been updated to 2.8.0. This will make the `CI` and
 `TEST_KITCHEN` environmental variables match the behavior of
@@ -572,7 +821,7 @@ changes:
 -   Waivers, our new beta feature, was added to InSpec! Waivers allows
     you to better manage compliance failures. We would love to hear your
     feedback on this! See the [InSpec Waivers
-    documentation](https://www.inspec.io/docs/reference/waivers/) for
+    documentation](/inspec/waivers/) for
     more details.
 
 **Improvements**
@@ -677,20 +926,20 @@ we now have the following departments:
 
 You can run cookstyle with just a single department:
 
-``` bash
+```bash
 cookstyle --only ChefDeprecations
 ```
 
 You can also exclude a specific department from the command line:
 
-``` bash
+```bash
 cookstyle --except ChefStyle
 ```
 
 You can also disable a specific department by adding the following to
 your `.rubocop.yml` config:
 
-``` yaml
+```yaml
 ChefStyle:
   Enabled: false
 ```
@@ -754,7 +1003,7 @@ images.
 
 For example `knife google image list --gce_project "chef-msys"`:
 
-``` bash
+```bash
 NAME                             PROJECT        FAMILY         DISK SIZE  STATUS
 kpl-w-image                      chef-msys      windows        60 GB      READY
 centos-6-v20190916               centos-cloud   centos-6       10 GB      READY
@@ -843,7 +1092,7 @@ for a complete list of new rules.
 #### kitchen-azurerm
 
 kitchen-azurerm has been updated from 0.14.8 to 0.14.9, which adds a new
-`use_ephemeral_osdisk` configuration option. See Microsoft's [Empheral
+`use_ephemeral_osdisk` configuration option. See Microsoft's [Ephemeral
 OS Disk
 Announcement](https://azure.microsoft.com/en-us/updates/azure-ephemeral-os-disk-now-generally-available/)
 for more information on this new feature.
@@ -873,10 +1122,10 @@ from 12 characters to 15 characters. Thanks
 
 #### knife-ec2
 
-knife-ec2 has beeen updated from 1.0.8 to 1.0.12. This new version
+knife-ec2 has been updated from 1.0.8 to 1.0.12. This new version
 includes multiple fixes for network configuration setup, a new
 `--cpu-credits` option for launching T2/T3 instances as unlimited, and
-fixes for issues with attaching emphemeral disks.
+fixes for issues with attaching ephemeral disks.
 
 ### Platform Support Updates
 
@@ -967,7 +1216,7 @@ changes:
 
 Cookstyle has been updated to 5.0.0 with a large number of bugfixes and
 major improvements that lay the groundwork for future autocorrecting of
-cookobook style and deprecation warnings.
+cookbook style and deprecation warnings.
 
 The RuboCop engine that powers Cookstyle has been updated from 0.62 to
 0.72, which includes several hundred bugfixes to the codebase. Due to
@@ -1057,7 +1306,7 @@ makes provisioning systems in AWS even easier.
 This command lists all VPCs in your environment including the ID, which
 you need when provisioning new systems into a specific VPC.
 
-``` none
+```none
 knife ec2 vpc list
 ID            State      CIDR Block     Instance Tenancy  DHCP Options ID  Default VPC?
 vpc-b1bc8d9d  available  10.0.0.0/16    default           dopt-1d78412a    No
@@ -1069,7 +1318,7 @@ vpc-daafd931  available  172.0.0.0/16   default           dopt-1d78412a    Yes
 This command lists all ENIs in your environment including the ID, which
 you need when adding the ENI to a newly provisioned instance.
 
-``` none
+```none
 knife ec2 eni list
 ID                     Status  AZ          Public IP       Private IPs    IPv6 IPs  Subnet ID        VPC ID
 eni-0123f25ae7805b651  in-use  us-west-2a  63.192.209.236  10.0.0.204               subnet-4ef3b123  vpc-b1bc8d9d
@@ -1082,7 +1331,7 @@ This command lists all security groups in your environment including the
 ID, which you need when assigning a newly provisioned instance to a
 group.
 
-``` none
+```none
 $knife ec2 securitygroup list
 ID                    Name                                     VPC ID
 sg-12332d875a4a123d6  not-today-hackers                        vpc-dbbf59a2
@@ -1094,7 +1343,7 @@ sg-123708ab12388cac5  open-to-the-world                        vpc-dbbf59a2
 This command lists all subnets in your environment including the ID,
 which you need when placing a newly provisioned instance in a subnet.
 
-``` none
+```none
 knife ec2 subnet list
 ID               State      CIDR Block      AZ          Available IPs  AZ Default?  Maps Public IP?  VPC ID
 subnet-bd2333a9  available  172.31.0.0/20   us-west-2b  4091           Yes          Yes              vpc-b1bc8d9d
@@ -1202,7 +1451,7 @@ repositories that match Chef's best practices.
     <spancommand class="title-ref">cookbook</spancommand you can view this
     verbose output with the `--verbose` flag.
 
-### Updated Commponents
+### Updated Components
 
 #### Chef InSpec 4
 
@@ -1224,7 +1473,7 @@ for more details.
 Fauxhai has been updated from 6.11 to 7.3. This removes all platforms
 that were previously marked as deprecated. So if you've noticed
 deprecation warnings during your ChefSpec tests, you will need to update
-those specs for the latest [supported Faxhai
+those specs for the latest [supported Fauxhai
 platforms](https://github.com/chefspec/fauxhai/blob/master/PLATFORMS.md).
 This release also adds the following new platform releases for testing
 in ChefSpec:
@@ -1264,7 +1513,7 @@ useful for local platform image testing.
 
 kitchen.yml example:
 
-``` none
+```none
 driver:
   name: dokken
   pull_platform_image: false
@@ -1374,7 +1623,7 @@ kitchen-digitalocean has been updated to 0.10.5 which adds new image
 aliases for <span class="title-ref">Debian-10</span> and <span
 class="title-ref">FreeBSD-12</span>.
 
-#### kitchen-dokkken 2.8.0
+#### kitchen-dokken 2.8.0
 
 kitchen-dokken has been updated to 2.8.0. This will make the `CI` and
 `TEST_KITCHEN` environmental variables match the behavior of
@@ -1419,7 +1668,7 @@ shipped in ChefDK 4 have been backported to ChefDK 3.
 -   `chef generate cookbook --kitchen dokken` now generates a fully
     working kitchen-dokken config.
 -   `chef generate cookbook` no longer creates cookbook files with the
-    unecessary `frozen_string_literal: true` comments.
+    unnecessary `frozen_string_literal: true` comments.
 -   `chef generate cookbook` now generates Test Kitchen configs with the
     `product_name`/`product_version` method of specifying Chef Infra
     Client releases as `require_chef_omnibus` will be removed in the
@@ -1434,7 +1683,7 @@ shipped in ChefDK 4 have been backported to ChefDK 3.
 
 #### Chef Infra Client 14.14.25
 
-Chef Infra Client has been udpated from 14.13 to 14.14.25. This release
+Chef Infra Client has been updated from 14.13 to 14.14.25. This release
 includes support for the new `unified_mode` in custom resources, a large
 number of improvements to resources, improved platform detection
 support, as well as bug fix. See the [Chef Infra Client 14.14.25 Release
@@ -1450,7 +1699,7 @@ to the PolicyFile.
 #### kitchen-azurerm
 
 kitchen-azurerm has been updated from 0.14.8 to 0.14.9, which adds a new
-`use_ephemeral_osdisk` configuration option. See Microsoft's [Empheral
+`use_ephemeral_osdisk` configuration option. See Microsoft's [Ephemeral
 OS Disk
 Announcement](https://azure.microsoft.com/en-us/updates/azure-ephemeral-os-disk-now-generally-available/)
 for more information on this new feature.
@@ -2147,7 +2396,7 @@ cookbook(s) given on the command line.
 
     Policyfiles now support git targets for included policies.
 
-    ``` ruby
+    ```ruby
     include_policy 'base_policy',
                   git: 'https://github.com/happychef/chef-repo.git',
                   branch: master,
@@ -2173,7 +2422,7 @@ cookbook(s) given on the command line.
         brings compliance automation to the cloud, with new resource
         types specifically built for AWS and Azure clouds. Along with
         these changes are major speed improvements and quality of life
-        updates. Please visit [Inspec](https://www.inspec.io) for more
+        updates. Please visit [Inspec](/inspec/) for more
         information.
 
     -   **ChefSpec**
@@ -2326,10 +2575,10 @@ cookbook(s) given on the command line.
     `chef push`, it can be used in another policy by adding code like
     the following to the ruby policyfile:
 
-    ``` ruby
-    cookbook "runit",
-      chef_server_artifact: "https://chef.example/organizations/myorg",
-      identifier: "09d43fad354b3efcc5b5836fef5137131f60f974"
+    ```ruby
+    cookbook 'runit',
+      chef_server_artifact: 'https://chef.example/organizations/myorg',
+      identifier: '09d43fad354b3efcc5b5836fef5137131f60f974'
     ```
 
 -   **Added include_policy directive**
@@ -2343,7 +2592,7 @@ cookbook(s) given on the command line.
 
     Given a policyfile `base.rb`:
 
-    ``` ruby
+    ```ruby
     name 'base'
 
     default_source :supermarket
@@ -2355,7 +2604,7 @@ cookbook(s) given on the command line.
 
     Run:
 
-    ``` none
+    ```none
     chef install ./base.rb
 
     Building policy base
@@ -2371,7 +2620,7 @@ cookbook(s) given on the command line.
     This will produce the `base.lock.json` file that will be included in
     our next policy, `users.rb`:
 
-    ``` ruby
+    ```ruby
     name 'users'
 
     default_source :supermarket
@@ -2385,7 +2634,7 @@ cookbook(s) given on the command line.
 
     Run:
 
-    ``` none
+    ```none
     chef install ./users.rb
 
     Building policy users
@@ -2687,7 +2936,7 @@ rather than before every test case. To take advantage of this
 performance enhancer, simply set the `server_runner_clear_cookbooks`
 RSpec configuration value to `false` in your `spec_helper.rb`.
 
-``` ruby
+```ruby
 RSpec.configure do |config|
   config.server_runner_clear_cookbooks = false
 end
@@ -2709,7 +2958,7 @@ for a list of all supported platforms for use in ChefSpec.
 InSpec has been updated to 1.19.1 with the following new functionality:
 
 -   Better filter support for the [processes
-    resource](https://inspec.io/docs/reference/resources/processes/).
+    resource](/inspec/resources/processes/).
 -   New `packages`, `crontab`, `x509_certificate`, and
     `x509_private_key` resources
 -   New `inspec habitat profile create` command to create a Habitat

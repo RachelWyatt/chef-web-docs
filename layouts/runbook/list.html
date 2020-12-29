@@ -41,17 +41,23 @@
 
               <div class="prose">
 
-                {{ readFile "layouts/shortcodes/chef_server.md" | markdownify }}
+                <p>
+                  {{ readFile "themes/docs-new/layouts/shortcodes/chef_server.md" | markdownify }}
+                </p>
 
-                {{ readFile "layouts/shortcodes/chef_server_component_erchef_background.md" | markdownify }}
+                <p>
+                  {{ readFile "themes/docs-new/layouts/shortcodes/chef_server_component_erchef_background.md" | markdownify }}
+                </p>
 
                 <p>
                   The following diagram shows the various components that are part of a
                   Chef Infra Server deployment and how they relate to one another.
                 </p>
 
+                <p>
+                  <img src="/images/server_components_14.svg" width="500" alt="image" />
+                </p>
 
-                <img src="/images/server_components.svg" width="500" alt="image" />
 
                 <table style="width:99%;">
                 <colgroup>
@@ -67,30 +73,27 @@
                 <tbody>
                 <tr class="odd">
                 <td><p>Bookshelf</p></td>
-                <td><p>{{ readFile "layouts/shortcodes/chef_server_component_bookshelf.md" | markdownify }}</p>
+                <td><p>{{ readFile "themes/docs-new/layouts/shortcodes/chef_server_component_bookshelf.md" | markdownify }}</p>
                 <p>All cookbooks are stored in a dedicated repository.</p></td>
                 </tr>
                 <tr class="even">
                 <td>Erchef</td>
-                <td>{{ readFile "layouts/shortcodes/chef_server_component_erchef.md" | markdownify }}</td>
+                <td>{{ readFile "themes/docs-new/layouts/shortcodes/chef_server_component_erchef.md" | markdownify }}</td>
                 </tr>
                 <tr class="odd">
-                <td><p>Message Queues</p></td>
-                <td><p>Messages are sent to the Search Index using the following components:</p>
-                <ol>
-                <li>{{ readFile "layouts/shortcodes/chef_server_component_rabbitmq.md" | markdownify }}</li>
-                <li>{{ readFile "layouts/shortcodes/chef_server_component_expander.md" | markdownify }}</li>
-                <li>{{ readFile "layouts/shortcodes/chef_server_component_solr.md" | markdownify }}</li>
-                </ol>
-                <p>All messages are added to a dedicated search index repository.</p></td>
+                <td>Messages</td>
+                <td>
+                  <p>{{ readFile "themes/docs-new/layouts/shortcodes/chef_server_component_elasticsearch.md" | markdownify }}</p>
+                  <p>All messages are added to a dedicated search index repository.</p>
+                </td>
                 </tr>
                 <tr class="even">
                 <td>Nginx</td>
-                <td>{{ readFile "layouts/shortcodes/chef_server_component_nginx.md" | markdownify }}</td>
+                <td>{{ readFile "themes/docs-new/layouts/shortcodes/chef_server_component_nginx.md" | markdownify }}</td>
                 </tr>
                 <tr class="odd">
                 <td>PostgreSQL</td>
-                <td>{{ readFile "layouts/shortcodes/chef_server_component_postgresql.md" | markdownify }}</td>
+                <td>{{ readFile "themes/docs-new/layouts/shortcodes/chef_server_component_postgresql.md" | markdownify }}</td>
                 </tr>
                 </tbody>
                 </table>

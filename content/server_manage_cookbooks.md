@@ -1,20 +1,21 @@
 +++
 title = "Manage Cookbooks"
 draft = false
+
+gh_repo = "chef-web-docs"
 robots = "noindex"
 
 
 aliases = ["/server_manage_cookbooks.html"]
 
 [menu]
-  [menu.infra]
+  [menu.legacy]
     title = "Cookbooks"
-    identifier = "chef_infra/features/management_console/server_manage_cookbooks.md Cookbooks"
-    parent = "chef_infra/features/management_console"
+    identifier = "legacy/manage/server_manage_cookbooks.md Cookbooks"
+    parent = "legacy/manage"
     weight = 40
 +++
-
-[\[edit on GitHub\]](https://github.com/chef/chef-web-docs/blob/master/content/server_manage_cookbooks.md)
+{{% chef_automate_mark %}}
 
 {{% EOL_manage %}}
 
@@ -66,27 +67,27 @@ A cookbook can contain the following types of files:
 <tbody>
 <tr class="odd">
 <td>Attributes</td>
-<td>{{% cookbooks_attribute %}}</td>
+<td>{{< readFile_shortcode file="cookbooks_attribute.md" >}}</td>
 </tr>
 <tr class="even">
 <td>Files</td>
-<td>{{% resource_cookbook_file_summary %}}</td>
+<td>{{< readFile_shortcode file="resource_cookbook_file_summary.md" >}}</td>
 </tr>
 <tr class="odd">
 <td>Libraries</td>
-<td>{{% libraries_summary %}}</td>
+<td>{{< readFile_shortcode file="libraries_summary.md" >}}</td>
 </tr>
 <tr class="even">
 <td>Recipes</td>
-<td>{{% cookbooks_recipe %}}</td>
+<td>{{< readFile_shortcode file="cookbooks_recipe.md" >}}</td>
 </tr>
 <tr class="odd">
 <td>Resources</td>
-<td>{{% resources_common %}}</td>
+<td>{{< readFile_shortcode file="resources_common.md" >}}</td>
 </tr>
 <tr class="even">
 <td>Templates</td>
-<td>{{% template %}}</td>
+<td>{{< readFile_shortcode file="template.md" >}}</td>
 </tr>
 </tbody>
 </table>

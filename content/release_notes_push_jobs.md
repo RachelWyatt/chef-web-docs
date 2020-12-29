@@ -2,17 +2,16 @@
 title = "Release Notes: Chef Push Jobs 1.0 - 2.5"
 draft = false
 
+gh_repo = "chef-web-docs"
+
 aliases = ["/release_notes_push_jobs.html"]
 
 [menu]
-  [menu.infra]
-    title = "Chef Push Jobs"
-    identifier = "chef_infra/release_notes/release_notes_push_jobs.md Chef Push Jobs"
-    parent = "chef_infra/release_notes"
-    weight = 40
+  [menu.legacy]
+    title = "Chef Push Jobs Release Notes"
+    identifier = "legacy/push_jobs/release_notes_push_jobs.md Chef Push Jobs"
+    parent = "legacy/push_jobs"
 +++
-
-[\[edit on GitHub\]](https://github.com/chef/chef-web-docs/blob/master/content/release_notes_push_jobs.md)
 
 Chef Push Jobs is an extension of the Chef server that allows jobs to be
 run against nodes independently of a chef-client run. A job is an action
@@ -143,7 +142,7 @@ Both the `knife-push` library and the Chef Push Jobs API provide options
 to direct the client to capture the job output and return it to the
 server for inspection:
 
-``` bash
+```bash
 knife job start --capture "echo foobar" node1
 Started. Job ID: 26e98ba162fa7ba6fb2793125553c7ae
 .Complete.
@@ -166,7 +165,7 @@ This includes:
 
 <!-- -->
 
-``` bash
+```bash
 knife job start --file .chef/config.rb --capture --with-env '{"test": "foo"}' --in-dir "/tmp" --as-user daemon "print_execution_environment" node2
 Started. Job ID: 26e98ba162fac37787292637362808cb
 ...
@@ -204,7 +203,7 @@ API](/api_push_jobs/).
 Here is a quick example of what an organization-level feed might look
 like.
 
-``` xml
+```xml
 event: start
 id: dcd37f50-2d77-4761-895b-33134dbf87d1
 data: {"timestamp":"2014-07-10 05:10:40.995958Z","job":"B","command":"chef-client","run_timeout":300,"user":"rebecca","quorum":2,"node_count":2}

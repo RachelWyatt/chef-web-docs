@@ -2,6 +2,8 @@
 title = "Backup and Restore a Standalone or Frontend install"
 draft = false
 
+gh_repo = "chef-web-docs"
+
 aliases = ["/server_backup_restore.html"]
 
 runbook_weight = 70
@@ -13,8 +15,6 @@ runbook_weight = 70
     parent = "chef_infra/managing_chef_infra_server"
     weight = 20
 +++
-
-[\[edit on GitHub\]](https://github.com/chef/chef-web-docs/blob/master/content/runbook/server_backup_restore.md)
 
 Periodic backups of Chef Infra Server data are an essential part of
 managing and maintaining a healthy configuration and ensuring that
@@ -53,7 +53,7 @@ for restoring those backups.
 
 **Examples**
 
-``` bash
+```bash
 chef-server-ctl restore /path/to/tar/archive.tar.gz
 ```
 
@@ -88,7 +88,7 @@ To restore a Chef Backend-based Chef Infra Server cluster:
     Backend cluster. The argument to the `--publish_address` option
     should be the IP address for reaching the node you are restoring.
 
-    ``` bash
+    ```bash
     chef-backend-ctl restore --publish_address X.Y.Z.W /path/to/backup.tar.gz
     ```
 
@@ -96,7 +96,7 @@ To restore a Chef Backend-based Chef Infra Server cluster:
     testing and verifying your restore process you can test against a
     single Chef Backend node and a single Chef Infra Server node.)
 
-    ``` bash
+    ```bash
     chef-backend-ctl join-cluster IP_OF_FIRST_NODE --publish_address IP_OF_THIS_NODE
     ```
 
@@ -106,13 +106,13 @@ To restore a Chef Backend-based Chef Infra Server cluster:
     using the steps found in [the installation
     instructions.](/install_server_ha/#step-5-install-and-configure-first-frontend).
 
-    ``` bash
+    ```bash
     chef-server-ctl restore /path/to/chef-server-backup.tar.gz
     ```
 
 4.  Run the `reindex` command to re-populate your search index
 
-    ``` bash
+    ```bash
     chef-server-ctl reindex --all
     ```
 

@@ -2,6 +2,8 @@
 title = "An Overview of Chef Infra"
 draft = false
 
+gh_repo = "chef-web-docs"
+
 aliases = ["/chef_overview.html"]
 
 [menu]
@@ -11,8 +13,6 @@ aliases = ["/chef_overview.html"]
     parent = "chef_infra/getting_started"
     weight = 10
 +++
-
-[\[edit on GitHub\]](https://github.com/chef/chef-web-docs/blob/master/content/chef_overview.md)
 
 {{% chef %}}
 
@@ -26,7 +26,7 @@ aliases = ["/chef_overview.html"]
     Chef Infra. The Chef Infra Client is installed on each node and is
     used to configure the node to its desired state.
 -   **Chef Infra Server** acts as [a hub for configuration
-    data](/server_overview/). Chef Infra Server stores cookbooks,
+    data](/server/). Chef Infra Server stores cookbooks,
     the policies that are applied to nodes, and metadata that describes
     each registered node that is being managed by Chef. Nodes use the
     Chef Infra Client to ask the Chef Infra Server for configuration
@@ -58,19 +58,25 @@ Chef Infra has the following major components:
 </thead>
 <tbody>
 <tr class="odd">
-<td><p><img src="/images/icon_workstation.svg" class="align-center" width="100" alt="image" /></p>
-<p><img src="/images/icon_cookbook.svg" class="align-center" width="100" alt="image" /></p>
-<p><img src="/images/icon_ruby.svg" class="align-center" width="100" alt="image" /></p></td>
+<td><p><img src="/images/icon_workstation.svg" class="align-center" width="100" alt="image" /></p></td>
 <td><p>One (or more) workstations are configured to allow users to author, test, and maintain cookbooks.</p>
-<p>Workstation systems run the Chef Workstation package which includes tools such as Chef Infra Client, Chef InSpec, Test Kitchen, ChefSpec, Cookstyle, and other tools necessary for developing and testing your infrastructure with Chef products.</p>
-<p>Cookbooks are uploaded to the Chef Infra Server from these workstations. Some cookbooks are custom to the organization and others are based on community cookbooks available from the Chef Supermarket.</p>
-<p>Ruby is the programming language that is the authoring syntax for cookbooks. Most recipes are simple patterns (blocks that define properties and values that map to specific configuration items like packages, files, services, templates, and users. The full power of Ruby is available for when you need a programming language.</p></td>
+<p>Workstation systems run the Chef Workstation package which includes tools such as Chef Infra Client, Chef InSpec, Test Kitchen, ChefSpec, Cookstyle, and other tools necessary for developing and testing your infrastructure with Chef products.</p></td>
+</tr>
+<tr class="odd">
+<td><p><img src="/images/icon_cookbook.svg" class="align-center" width="100" alt="image" /></p></td>
+<td><p>Cookbooks are uploaded to the Chef Infra Server from these workstations. Some cookbooks are custom to the organization and others are based on community cookbooks available from the Chef Supermarket.</p></td>
 </tr>
 <tr class="even">
-<td><p><img src="/images/icon_node.svg" class="align-center" width="100" alt="image" /></p>
-<p><img src="/images/icon_chef_client.svg" class="align-center" width="100" alt="image" /></p></td>
-<td><p>{{% node %}}</p>
-<p>Chef Infra Client is installed on each node that is managed with Chef Infra. Chef Infra Client configures the node locally by performing the tasks specified in the run-list. Chef Infra Client will also pull down any required configuration data from the Chef Infra Server during a Chef Infra Client run.</p></td>
+<td><p><img src="/images/icon_ruby.svg" class="align-center" width="100" alt="image" /></p></td>
+<td><p>Ruby is the programming language that is the authoring syntax for cookbooks. Most recipes are simple patterns (blocks that define properties and values that map to specific configuration items like packages, files, services, templates, and users. The full power of Ruby is available for when you need a programming language.</p></td>
+</tr>
+<tr class="odd">
+<td><p><img src="/images/icon_node.svg" class="align-center" width="100" alt="image" /></p></td>
+<td><p>{{< readFile_shortcode file="node.md" >}}</p></td>
+</tr>
+<tr class="even">
+<td><p><img src="/images/icon_chef_client.svg" class="align-center" width="100" alt="image" /></p></td>
+<td><p>Chef Infra Client is installed on each node that is managed with Chef Infra. Chef Infra Client configures the node locally by performing the tasks specified in the run-list. Chef Infra Client will also pull down any required configuration data from the Chef Infra Server during a Chef Infra Client run.</p></td>
 </tr>
 <tr class="odd">
 <td><p><img src="/images/icon_chef_server.svg" class="align-center" width="100" alt="image" /></p></td>
@@ -121,8 +127,8 @@ Some important tools and components of Chef Workstation include:
 </thead>
 <tbody>
 <tr class="odd">
-<td><img src="/images/icon_devkit.svg" class="align-center" width="100" alt="image" /></td>
-<td>{{% chef_workstation %}}</td>
+<td><img src="/images/icon_workstation.svg" class="align-center" width="100" alt="image" /></td>
+<td>{{< readFile_shortcode file="chef_workstation.md" >}}</td>
 </tr>
 <tr class="even">
 <td><p><img src="/images/icon_ctl_chef.svg" class="align-center" width="100" alt="image" /></p>
@@ -149,11 +155,11 @@ Some important tools and components of Chef Workstation include:
 </tr>
 <tr class="even">
 <td><img src="/images/icon_kitchen.svg" class="align-center" width="100" alt="image" /></td>
-<td>{{% test_kitchen %}}</td>
+<td>{{< readFile_shortcode file="test_kitchen.md" >}}</td>
 </tr>
 <tr class="odd">
 <td><img src="/images/icon_chefspec.svg" class="align-center" width="100" alt="image" /></td>
-<td>{{% chefspec_summary %}}</td>
+<td>{{< readFile_shortcode file="chefspec_summary.md" >}}</td>
 </tr>
 </tbody>
 </table>
@@ -187,35 +193,35 @@ Cookbooks are comprised of the following components:
 <tbody>
 <tr class="odd">
 <td><img src="/images/icon_cookbook_attributes.svg" class="align-center" width="100" alt="image" /></td>
-<td>{{% cookbooks_attribute %}}</td>
+<td>{{< readFile_shortcode file="cookbooks_attribute.md" >}}</td>
 </tr>
 <tr class="even">
 <td><img src="/images/icon_cookbook_files.svg" class="align-center" width="100" alt="image" /></td>
-<td>{{% resource_cookbook_file_summary %}}</td>
+<td>{{< readFile_shortcode file="resource_cookbook_file_summary.md" >}}</td>
 </tr>
 <tr class="odd">
 <td><img src="/images/icon_cookbook_libraries.svg" class="align-center" width="100" alt="image" /></td>
-<td>{{% libraries_summary %}}</td>
+<td>{{< readFile_shortcode file="libraries_summary.md" >}}</td>
 </tr>
 <tr class="even">
 <td><img src="/images/icon_cookbook_metadata.svg" class="align-center" width="100" alt="image" /></td>
-<td>{{% cookbooks_metadata %}}</td>
+<td>{{< readFile_shortcode file="cookbooks_metadata.md" >}}</td>
 </tr>
 <tr class="odd">
 <td><p><img src="/images/icon_cookbook_recipes.svg" class="align-center" width="100" alt="image" /></p>
 <p><img src="/images/icon_recipe_dsl.svg" class="align-center" width="100" alt="image" /></p></td>
-<td><p>{{% cookbooks_recipe %}}</p>
+<td><p>{{< readFile_shortcode file="cookbooks_recipe.md" >}}</p>
 <p>The Chef Infra Client will run a recipe only when asked. When the Chef Infra Client runs the same recipe more than once, the results will be the same system state each time. When a recipe is run against a system, but nothing has changed on either the system or in the recipe, the Chef Infra Client won't change anything.</p>
-<p>{{% dsl_recipe_summary %}}</p></td>
+<p>{{< readFile_shortcode file="dsl_recipe_summary.md" >}}</p></td>
 </tr>
 <tr class="even">
 <td><p><img src="/images/icon_cookbook_resources.svg" class="align-center" width="100" alt="image" /></p></td>
-<td><p>{{% resources_common %}}</p>
+<td><p>{{< readFile_shortcode file="resources_common.md" >}}</p>
 <p>Chef has <a href="/resources/">many built-in resources</a> that cover all of the most common actions across all of the most common platforms. You can <a href="/custom_resources/">build your own resources</a> to handle any situation that isn't covered by a built-in resource.</p></td>
 </tr>
 <tr class="odd">
 <td><img src="/images/icon_cookbook_templates.svg" class="align-center" width="100" alt="image" /></td>
-<td>{{% template %}}</td>
+<td>{{< readFile_shortcode file="template.md" >}}</td>
 </tr>
 <tr class="even">
 <td><img src="/images/icon_cookbook_tests.svg" class="align-center" width="100" alt="image" /></td>
@@ -250,12 +256,12 @@ The key components of nodes that are under management by Chef include:
 <tbody>
 <tr class="odd">
 <td><p><img src="/images/icon_chef_client.svg" class="align-center" width="100" alt="image" /></p></td>
-<td><p>{{% chef_client_summary %}}</p>
-<p>{{% security_key_pairs_chef_client %}}</p></td>
+<td><p>{{< readFile_shortcode file="chef_client_summary.md" >}}</p>
+<p>{{< readFile_shortcode file="security_key_pairs_chef_client.md" >}}</p></td>
 </tr>
 <tr class="even">
 <td><img src="/images/icon_ohai.svg" class="align-center" width="100" alt="image" /></td>
-<td>{{% ohai_summary %}}</td>
+<td>{{< readFile_shortcode file="ohai_summary.md" >}}</td>
 </tr>
 </tbody>
 </table>
@@ -278,15 +284,15 @@ The key components of nodes that are under management by Chef include:
 <tbody>
 <tr class="odd">
 <td><img src="/images/icon_search.svg" class="align-center" width="100" alt="image" /></td>
-<td>{{% search %}}</td>
+<td>{{< readFile_shortcode file="search.md" >}}</td>
 </tr>
 <tr class="even">
 <td><img src="/images/icon_manage.svg" class="align-center" width="100" alt="image" /></td>
-<td>{{% chef_manager %}}</td>
+<td>{{< readFile_shortcode file="chef_manager.md" >}}</td>
 </tr>
 <tr class="odd">
 <td><img src="/images/icon_data_bags.svg" class="align-center" width="100" alt="image" /></td>
-<td>{{% data_bag %}}</td>
+<td>{{< readFile_shortcode file="data_bag.md" >}}</td>
 </tr>
 <tr class="even">
 <td><img src="/images/icon_policy.svg" class="align-center" width="100" alt="image" /></td>
@@ -315,19 +321,19 @@ Some important aspects of policy include:
 <tbody>
 <tr class="odd">
 <td><img src="/images/icon_roles.svg" class="align-center" width="100" alt="image" /></td>
-<td>{{% role %}}</td>
+<td>{{< readFile_shortcode file="role.md" >}}</td>
 </tr>
 <tr class="even">
 <td><img src="/images/icon_environments.svg" class="align-center" width="100" alt="image" /></td>
-<td>{{% environment %}}</td>
+<td>{{< readFile_shortcode file="environment.md" >}}</td>
 </tr>
 <tr class="odd">
 <td><img src="/images/icon_cookbook_versions.svg" class="align-center" width="100" alt="image" /></td>
-<td>{{% cookbooks_version %}}</td>
+<td>{{< readFile_shortcode file="cookbooks_version.md" >}}</td>
 </tr>
 <tr class="even">
 <td><img src="/images/icon_run_lists.svg" class="align-center" width="100" alt="image" /></td>
-<td>{{% node_run_list %}}</td>
+<td>{{< readFile_shortcode file="node_run_list.md" >}}</td>
 </tr>
 </tbody>
 </table>

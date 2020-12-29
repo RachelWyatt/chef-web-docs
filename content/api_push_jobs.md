@@ -2,17 +2,16 @@
 title = "Push Jobs API"
 draft = false
 
+gh_repo = "chef-web-docs"
+
 aliases = ["/api_push_jobs.html"]
 
 [menu]
-  [menu.infra]
+  [menu.legacy]
     title = "Push Jobs API"
-    identifier = "chef_infra/managing_chef_infra_server/push_jobs/api_push_jobs.md Push Jobs API"
-    parent = "chef_infra/managing_chef_infra_server/push_jobs"
-    weight = 50
+    identifier = "legacy/push_jobs/api_push_jobs.md Push Jobs API"
+    parent = "legacy/push_jobs"
 +++
-
-[\[edit on GitHub\]](https://github.com/chef/chef-web-docs/blob/master/content/api_push_jobs.md)
 
 The Push Jobs API is used to create jobs and retrieve status using Chef
 Push Jobs, a tool that pushes jobs against a set of nodes in the
@@ -33,14 +32,14 @@ The easiest way to send commands to the Chef Infra Server from your
 workstation is to use the `knife exec` subcommand. Here is an example of
 making a basic `knife exec` command against a RESTful JSON API.
 
-``` bash
+```bash
 knife exec -E 'api.get("/organizations/ORG_NAME/pushy/jobs/JOB_ID")'
 ```
 
 For some Push Jobs API endpoints, you need to specify certain headers.
 To do that you simply pass a hash into the command.
 
-``` bash
+```bash
 knife exec -E 'api.get("/organizations/ORG_NAME/pushy/jobs/JOB_ID/output/NODE_NAME/stdout", RAW, {"Accept" => "application/event-stream"})'
 ```
 
@@ -76,13 +75,13 @@ This method has no parameters.
 
 **Request**
 
-``` xml
+```xml
 POST /organizations/ORG_NAME/pushy/jobs
 ```
 
 with a request body similar to:
 
-``` javascript
+```javascript
 {
   "command": "bash $PUSHY_JOB_FILE",
   "run_timeout": 300,
@@ -137,7 +136,7 @@ where:
 
 The response is similar to:
 
-``` javascript
+```javascript
 {
   "id": "aaaaaaaaaaaa25fd67fa8715fd547d3d"
 }
@@ -194,7 +193,7 @@ contents of the file prefixed with `raw:` or `base64:`.
 
 **Request**
 
-``` xml
+```xml
 GET /organizations/ORG_NAME/pushy/jobs/ID
 ```
 
@@ -202,7 +201,7 @@ GET /organizations/ORG_NAME/pushy/jobs/ID
 
 The response will return something similar to:
 
-``` javascript
+```javascript
 {
   "id": "aaaaaaaaaaaa25fd67fa8715fd547d3d",
   "command": "chef-client",
@@ -254,7 +253,7 @@ where:
 
 **Request with \`\`?include_file\`\` parameter**
 
-``` xml
+```xml
 GET /organizations/ORG_NAME/pushy/jobs/ID?include_file=true
 ```
 
@@ -262,7 +261,7 @@ GET /organizations/ORG_NAME/pushy/jobs/ID?include_file=true
 
 The response will return something similar to:
 
-``` javascript
+```javascript
 {
   "id": "aaaaaaaaaaaa25fd67fa8715fd547d3d",
   "command": "bash $CHEF_PUSH_JOB_FILE",
@@ -355,7 +354,7 @@ The Accept header for this request must be `application/octet-stream`.
 
 **Request**
 
-``` xml
+```xml
 Accept: application/octet-stream
 GET /organizations/ORG_NAME/pushy/jobs/ID/output/NODE_NAME/stdout
 ```
@@ -364,7 +363,7 @@ GET /organizations/ORG_NAME/pushy/jobs/ID/output/NODE_NAME/stdout
 
 The response will return something similar to:
 
-``` xml
+```xml
 Starting Chef Client, version 12.11.18
 
 ...
@@ -378,7 +377,7 @@ Chef client finished, 23/187 resources updated in 15 seconds
 
 **Request**
 
-``` xml
+```xml
 Accept: application/octet-stream
 GET /organizations/ORG_NAME/pushy/jobs/ID/output/NODE_NAME/stderr
 ```
@@ -387,7 +386,7 @@ GET /organizations/ORG_NAME/pushy/jobs/ID/output/NODE_NAME/stderr
 
 The response will return something similar to:
 
-``` xml
+```xml
 bash: no such file or directory: /usr/local/run.sh
 ```
 
@@ -451,7 +450,7 @@ time of organization events is 60 seconds (configurable).
 
 **Request**
 
-``` xml
+```xml
 Accept: text/event-stream
 Last-Event-ID: dcd37f50-2d77-4761-895b-33134dbf87d1
 GET /organizations/ORG_NAME/pushy/jobs_status_feed
@@ -461,7 +460,7 @@ GET /organizations/ORG_NAME/pushy/jobs_status_feed
 
 The response will return something similar to:
 
-``` xml
+```xml
 event: start
 id: dcd37f50-2d77-4761-895b-33134dbf87d1
 data: {"timestamp":"2014-07-10 05:10:40.995958Z","job":"B","command":"chef-client","run_timeout":300,"user":"rebecca","quorum":2,"node_count":2}
@@ -558,7 +557,7 @@ the same data as requesting a named-job resource. In this case, any
 
 **Request**
 
-``` xml
+```xml
 Accept: text/event-stream
 GET /organizations/ORG_NAME/pushy/jobs_status_feed/JOBID
 ```
@@ -567,7 +566,7 @@ GET /organizations/ORG_NAME/pushy/jobs_status_feed/JOBID
 
 The response will return something similar to:
 
-``` xml
+```xml
 event: start
 id: dcd37f50-2d77-4761-895b-33134dbf87d1
 data: {"timestamp":"2014-07-10 05:17:40.995958Z","command":"ls /etc/chef","run_timeout":300,"user":"rebecca","quorum":2,"node_count":2}

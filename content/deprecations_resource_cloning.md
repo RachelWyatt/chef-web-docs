@@ -1,13 +1,13 @@
 +++
 title = "Deprecation: Resource Cloning (CHEF-3694)"
 draft = false
+
+gh_repo = "chef-web-docs"
 robots = "noindex"
 
 
 aliases = "/deprecations_resource_cloning.html"
 +++
-
-[\[edit on GitHub\]](https://github.com/chef/chef-web-docs/blob/master/content/deprecations_resource_cloning.md)
 
 Chef allows resources to be created with duplicate names, rather than
 treating that as an error. This means that several cookbooks can request
@@ -23,22 +23,22 @@ The behavior in Chef Client 12 and earlier, which is now deprecated, is
 that we will try to clone the existing resource, and then apply any
 properties from the new resource. For example:
 
-``` ruby
-file "/etc/my_file" do
-  owner "ken"
+```ruby
+file '/etc/my_file' do
+  owner 'ken'
 end
 
-file "/etc/my_file" do
-  mode "0755"
+file '/etc/my_file' do
+  mode '0755'
 end
 ```
 
 will result in the second instance having the following properties:
 
-``` ruby
-file "/etc/my_file" do
-  owner "ken"
-  mode "0755"
+```ruby
+file '/etc/my_file' do
+  owner 'ken'
+  mode '0755'
 end
 ```
 

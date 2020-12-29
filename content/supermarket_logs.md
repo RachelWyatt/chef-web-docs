@@ -2,6 +2,8 @@
 title = "Supermarket Logs"
 draft = false
 
+gh_repo = "chef-web-docs"
+
 aliases = ["/supermarket_logs.html"]
 
 [menu]
@@ -12,14 +14,12 @@ aliases = ["/supermarket_logs.html"]
     weight = 60
 +++
 
-[\[edit on GitHub\]](https://github.com/chef/chef-web-docs/blob/master/content/supermarket_logs.md)
-
 The Chef Supermarket omnibus package does not log Ruby on Rails messages
 by default. To enable debug logging, edit the
 `/opt/supermarket/embedded/service/supermarket/config/environments/production.rb`
 file and set the `config.log_level` setting to `:debug`:
 
-``` ruby
+```ruby
 config.logger = Logger.new('/var/log/supermarket/rails/rails.log')
 config.logger.level = 'DEBUG'
 config.log_level = :debug
@@ -27,6 +27,6 @@ config.log_level = :debug
 
 Save the file, and then restart the Ruby on Rails service:
 
-``` bash
+```bash
 supermarket-ctl restart rails
 ```

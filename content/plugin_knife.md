@@ -2,17 +2,17 @@
 title = "Knife Cloud Plugins"
 draft = false
 
+gh_repo = "chef-web-docs"
+
 aliases = ["/plugin_knife.html"]
 
 [menu]
-  [menu.api]
+  [menu.infra]
     title = "Cloud Plugins"
-    identifier = "extension_apis/knife_plugins/plugin_knife.md Cloud Plugins"
-    parent = "extension_apis/knife_plugins"
+    identifier = "chef_infra/extension_apis/knife_plugins/plugin_knife.md Cloud Plugins"
+    parent = "chef_infra/extension_apis/knife_plugins"
     weight = 10
 +++
-
-[\[edit on GitHub\]](https://github.com/chef/chef-web-docs/blob/master/content/plugin_knife.md)
 
 {{% plugin_knife_summary %}}
 
@@ -37,7 +37,7 @@ The following knife plug-ins are maintained by Chef:
 <tbody>
 <tr class="odd">
 <td><a href="https://github.com/chef/knife-azure">knife-azure</a></td>
-<td>{{% knife_azure %}}</td>
+<td>{{< readFile_shortcode file="knife_azure.md" >}}</td>
 </tr>
 <tr class="even">
 <td><a href="https://github.com/chef/knife-ec2">knife-ec2</a></td>

@@ -2,6 +2,8 @@
 title = "Microsoft Azure CLI"
 draft = false
 
+gh_repo = "chef-web-docs"
+
 aliases = ["/azure_chef_cli.html"]
 
 [menu]
@@ -11,8 +13,6 @@ aliases = ["/azure_chef_cli.html"]
     parent = "chef_infra/getting_started/chef_on_azure_guide"
     weight = 40
 +++
-
-[\[edit on GitHub\]](https://github.com/chef/chef-web-docs/blob/master/content/azure_chef_cli.md)
 
 The Azure Chef Extension is an extension for Microsoft Azure to enable
 Chef on virtual machine instances. The extension makes available two
@@ -35,7 +35,7 @@ Extension that is running on the named virtual machine.
 
 This command has the following syntax:
 
-``` bash
+```bash
 azure vm extension get-chef VM_NAME
 ```
 
@@ -48,7 +48,7 @@ on Microsoft Azure.
 
 This command has the following syntax:
 
-``` bash
+```bash
 azure vm extension set-chef VM_NAME (options)
 ```
 
@@ -86,7 +86,7 @@ This command has the following options:
 :   A JSON string that is added to the first run of a Chef Infra Client.
     For example:
 
-    ``` bash
+    ```bash
     -j '{"chef_node_name":"test_node"}'
     ```
 
@@ -120,19 +120,19 @@ The following examples show how to use this knife subcommand:
 
 **Create a virtual machine**
 
-``` bash
+```bash
 azure vm create your-vm-name MSFT__Windows-Server-2012 yourusername yourpassword --location "West US" -r
 ```
 
 **Set the Chef extension without a run-list**
 
-``` bash
+```bash
 azure vm extension set-chef your-vm-name --validation-pem ~/chef-repo/.chef/testorg-validator.pem --client-config ~/chef-repo/.chef/client.rb --version "1201.12"
 ```
 
 **Set the Chef extension with a run-list**
 
-``` bash
+```bash
 azure vm extension set-chef your-vm-name --validation-pem ~/chef-repo/.chef/testorg-validator.pem --client-config ~/chef-repo/.chef/client.rb --version "1201.12" -R 'recipe[your_cookbook_name::your_recipe_name]'
 ```
 
@@ -208,6 +208,9 @@ The extension has the following options that can be provided in the
 :   Specifies the [Ohai Hints](/ohai/#hints) to be set in the Ohai configuration of
     the target node.
 
+`chef_package_url`
+
+:    Specifies a URL to download and install the Chef Infra Client package (.msi .rpm .deb) from.
 
 `bootstrap_options`
 
@@ -289,7 +292,7 @@ configured from an ARM template.
 
 **Installing the Azure Chef extension on a Linux system**
 
-``` javascript
+```javascript
 {
    "type": "Microsoft.Compute/virtualMachines/extensions",
    "name": "myVirtualMachine/LinuxChefClient",
@@ -317,7 +320,7 @@ configured from an ARM template.
 
 **Installing the Azure Chef extension on a Windows system**
 
-``` javascript
+```javascript
 {
   "type": "Microsoft.Compute/virtualMachines/extensions",
   "name": "myVirtualMachine/ChefClient",
@@ -334,6 +337,7 @@ configured from an ARM template.
         "validation_client_name": "my-chef-organization-validator"
       },
       "runlist": "recipe[awesome_customers_windows],recipe[iis],role[windows_base]",
+      "chef_package_url" : "https://my.packages.chef.io/chef-client-15.11.8-1-x64.msi",
       "validation_key_format": "plaintext"
     },
     "protectedSettings": {
@@ -346,7 +350,7 @@ configured from an ARM template.
 **Installing the Azure Chef extension on a Linux system with SSL peer
 verification turned off and given a data bag secret**
 
-``` javascript
+```javascript
 {
    "type": "Microsoft.Compute/virtualMachines/extensions",
    "name": "myVirtualMachine/LinuxChefClient",

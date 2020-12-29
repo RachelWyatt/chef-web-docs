@@ -1,6 +1,8 @@
 +++
 title = "About the build-cookbook"
 draft = false
+
+gh_repo = "chef-web-docs"
 robots = "noindex"
 
 
@@ -13,8 +15,6 @@ aliases = ["/delivery_build_cookbook.html", "/release/automate/delivery_build_co
     parent = "legacy/workflow/managing_workflow"
     weight = 10
 +++
-
-[\[edit on GitHub\]](https://github.com/chef/chef-web-docs/blob/master/content/delivery_build_cookbook.md)
 
 Chef Automate uses Chef Infra Client to run recipes for each phase in a
 build pipeline. The phases are grouped into different stages.
@@ -174,13 +174,13 @@ To add a project using the Chef Automate web UI:
 `chef generate` can also create a custom build cookbook for use with
 Delivery:
 
-``` bash
+```bash
 chef generate build-cookbook NAME [options]
 ```
 
 The following options are available with `chef generate build-cookbook`:
 
-``` none
+```none
 -C, --copyright COPYRIGHT        Name of the copyright holder - defaults to 'The Authors'
 -m, --email EMAIL                Email address of the author - defaults to 'you@example.com'
 -a, --generator-arg KEY=VALUE    Use to set arbitrary attribute KEY to VALUE in the code_generator cookbook

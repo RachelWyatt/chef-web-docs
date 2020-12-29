@@ -1,6 +1,8 @@
 +++
 title = "Deprecation: Some Attribute Methods (CHEF-4)"
 draft = false
+
+gh_repo = "chef-web-docs"
 robots = "noindex"
 
 
@@ -8,10 +10,6 @@ aliases = "/deprecations_attributes.html"
 
 
 +++
-
-[\[edit on GitHub\]](https://github.com/chef/chef-web-docs/blob/master/content/deprecations_attributes.md)
-
-
 
 We are continuously improving and streamlining the way attributes work
 in Chef, to make it easier for users to reason about and safely
@@ -32,8 +30,8 @@ Removal: Chef Client 13
 
 Both lines in the example will cause separate deprecation warnings.
 
-``` ruby
-node.chef.server = "https://my.chef.server"
+```ruby
+node.chef.server = 'https://my.chef.server'
 chef_server = node.chef.server
 ```
 
@@ -43,8 +41,8 @@ Convert method syntax to bracket syntax by using brackets to denote
 attribute names. The code below is identical in function to the example
 above:
 
-``` ruby
-node['chef']['server'] = "https://my.chef.server"
+```ruby
+node['chef']['server'] = 'https://my.chef.server'
 chef_server = node['chef']['server']
 ```
 
@@ -58,9 +56,9 @@ Removal: Chef Client 14
 
 ### Example
 
-``` ruby
-node.set['chef']['server'] =  "https://my.chef.server"
-node.set_unless['chef']['server'] =  "https://my.chef.server"
+```ruby
+node.set['chef']['server'] = 'https://my.chef.server'
+node.set_unless['chef']['server'] = 'https://my.chef.server'
 ```
 
 ### Remediation
@@ -69,7 +67,7 @@ Choose the appropriate [precedence
 level](/attributes/#attribute-precedence), then replace `set` with
 that precedence level.
 
-``` ruby
-node.default['chef']['server'] =  "https://my.chef.server"
-node.default_unless['chef']['server'] =  "https://my.chef.server"
+```ruby
+node.default['chef']['server'] =  'https://my.chef.server'
+node.default_unless['chef']['server'] = 'https://my.chef.server'
 ```

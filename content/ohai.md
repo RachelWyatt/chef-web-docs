@@ -2,6 +2,8 @@
 title = "About Ohai"
 draft = false
 
+gh_repo = "chef-web-docs"
+
 aliases = ["/ohai.html"]
 
 [menu]
@@ -12,15 +14,13 @@ aliases = ["/ohai.html"]
     weight = 10
 +++
 
-[\[edit on GitHub\]](https://github.com/chef/chef-web-docs/blob/master/content/ohai.md)
-
 {{% ohai_summary %}}
 
 Ohai collects data for many platforms, including AIX, Darwin, Linux,
 FreeBSD, OpenBSD, NetBSD, Solaris, and any Microsoft Windows operating
 systems.
 
-View the [release notes](/release_notes_ohai/) for the latest
+See the [Chef Infra Client release notes](/release_notes_client/) for the latest
 information on Ohai.
 
 ## Automatic Attributes
@@ -37,13 +37,13 @@ information on Ohai.
 
 {{< /note >}}
 
-### Blacklist Attributes
+### Attributes Blocklist
 
-{{% node_attribute_blacklist %}}
+{{% node_attribute_blocklist %}}
 
-### Whitelist Attributes
+### Attribute Allowlist
 
-{{% node_attribute_whitelist %}}
+{{% node_attribute_allowlist %}}
 
 ## Default Plugins
 
@@ -53,7 +53,7 @@ installed on your system for the full list:
 
 ### General Purpose Plugins
 
-``` ruby
+```ruby
 azure.rb
 c.rb
 chef.rb
@@ -119,7 +119,7 @@ zpools.rb
 
 ### Platform Specific Plugins
 
-``` ruby
+```ruby
 aix
   kernel.rb
   memory.rb
@@ -162,7 +162,7 @@ linux
   memory.rb
   network.rb
   platform.rb
-  sessons.rb
+  sessions.rb
   virtualization.rb
 netbsd
   cpu.rb
@@ -212,10 +212,10 @@ enabled in the [client.rb configuration file](/config_rb_client/).
 Optional plugins can be enabled in the [client.rb configuration
 file](/config_rb_client/):
 
-``` ruby
+```ruby
 ohai.optional_plugins = [
   :Sessions,
-  :Lspci
+  :Lspci,
 ]
 ```
 
@@ -250,14 +250,14 @@ hints directory, and return nil if the file does not exist.
 If the hint file contains JSON content, it will be returned as a hash
 from the call to `hint?`.
 
-``` javascript
+```javascript
 {
   "snow": true,
   "penguins": "many"
 }
 ```
 
-``` ruby
+```ruby
 antarctica_hint = hint?('antarctica')
 if antarctica_hint['snow']
   "There are #{antarctica_hint['penguins']} penguins here."
@@ -277,4 +277,4 @@ adds a user) to refer to those attributes later on during a Chef Infra Client ru
 
 ## ohai Command Line Tool
 
-Ohai can be run on the command line outside of the Chef Infra Client run. See [Ohai (executable)](/ohai_ctl) for more information.
+Ohai can be run on the command line outside of the Chef Infra Client run. See [Ohai (executable)](/ctl_ohai) for more information.

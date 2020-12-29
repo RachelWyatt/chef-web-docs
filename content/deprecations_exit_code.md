@@ -1,13 +1,13 @@
 +++
 title = "Deprecation: Old Exit Codes (CHEF-2)"
 draft = false
+
+gh_repo = "chef-web-docs"
 robots = "noindex"
 
 
 aliases = "/deprecations_exit_code.html"
 +++
-
-[\[edit on GitHub\]](https://github.com/chef/chef-web-docs/blob/master/content/deprecations_exit_code.md)
 
 In older versions of Chef Client, it was not possible to discern why a
 chef run exited simply by examining the error code. This makes it very
@@ -29,7 +29,7 @@ Chef Client, we strongly recommend updating it to support the extended
 set of exit codes. However, it's still possible to enable the old
 behavior. Add the setting
 
-``` ruby
+```ruby
 exit_status :disabled
 ```
 

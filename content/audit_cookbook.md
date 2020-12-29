@@ -1,6 +1,8 @@
 +++
 title = "Sending Compliance Data to Chef Automate with Audit Cookbook"
 draft = false
+
+gh_repo = "chef-web-docs"
 robots = "noindex"
 
 
@@ -13,10 +15,6 @@ aliases = ["/audit_cookbook.html", "/audit_supported_configurations.html"]
     parent = "legacy/workflow/workflow_basics"
     weight = 70
 +++
-
-[\[edit on GitHub\]](https://github.com/chef/chef-web-docs/blob/master/content/audit_cookbook.md)
-
-
 
 {{< note >}}
 
@@ -80,7 +78,7 @@ and `profiles` attributes.
 A complete audit cookbook attribute configuration will look something
 like this:
 
-``` ruby
+```ruby
 ['audit']['reporter'] = 'chef-automate'
 ['audit']['server'] = 'https://chef-automate-server/api'
 ['audit']['owner'] = 'my-comp-org'
@@ -89,24 +87,24 @@ like this:
 ['audit']['profiles'] = [
   {
    'name': 'windows',
-   'compliance': 'base/windows'
-   }
+   'compliance': 'base/windows',
+   },
 ]
 ```
 
 Instead of a refresh token, it is also possible to use a `token` that
 expires in 12h after creation.
 
-``` ruby
+```ruby
 ['audit']['reporter'] = 'chef-automate'
-['audit']['server'] =  'https://chef-automate-fqdn/api'
+['audit']['server'] = 'https://chef-automate-fqdn/api'
 ['audit']['owner'] =  'my-comp-org'
 ['audit']['token'] =  'eyJ........................YQ'
 ['audit']['profiles'] = [
    {
      'name': 'windows',
-     'compliance': 'base/windows'
-     }
+     'compliance': 'base/windows',
+     },
  ]
 ```
 

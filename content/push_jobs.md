@@ -2,17 +2,16 @@
 title = "Chef Push Jobs"
 draft = false
 
+gh_repo = "chef-web-docs"
+
 aliases = ["/push_jobs.html"]
 
 [menu]
-  [menu.infra]
+  [menu.legacy]
     title = "Push Jobs"
-    identifier = "chef_infra/features/push_jobs.md Push Jobs"
-    parent = "chef_infra/features"
-    weight = 60
+    identifier = "legacy/push_jobs/push_jobs.md Push Jobs"
+    parent = "legacy/push_jobs"
 +++
-
-[\[edit on GitHub\]](https://github.com/chef/chef-web-docs/blob/master/content/push_jobs.md)
 
 {{% push_jobs_summary %}}
 
@@ -96,7 +95,7 @@ A whitelist is a list of jobs and commands that are used by Chef Push
 Jobs. A whitelist is saved as an attribute in the **push-jobs**
 cookbook. For example:
 
-``` ruby
+```ruby
 default['push_jobs']['whitelist'] = {
   'job_name' => 'command',
 }
@@ -105,7 +104,7 @@ default['push_jobs']['whitelist'] = {
 The whitelist is accessed from a recipe using the
 `node['push_jobs']['whitelist']` attribute. For example:
 
-``` ruby
+```ruby
 template 'name' do
   source 'name'
   ...
@@ -116,7 +115,7 @@ end
 Use the `knife exec` subcommand to add a job to the whitelist. For
 example:
 
-``` bash
+```bash
 knife exec -E 'nodes.transform("name:A_NODE_NAME") do |n|
     n.set["push_jobs"]["whitelist"]["ntpdate"] = "ntpdate -u time"
   end'
@@ -124,9 +123,9 @@ knife exec -E 'nodes.transform("name:A_NODE_NAME") do |n|
 
 where `["ntpdate"] = "ntpdate -u time"` is added to the whitelist:
 
-``` ruby
+```ruby
 default['push_jobs']['whitelist'] = {
-  "ntpdate" => "ntpdate -u time",
+  'ntpdate' => 'ntpdate -u time',
 }
 ```
 
@@ -270,13 +269,13 @@ This method has no parameters.
 
 **Request**
 
-``` xml
+```xml
 POST /organizations/ORG_NAME/pushy/jobs
 ```
 
 with a request body similar to:
 
-``` javascript
+```javascript
 {
   "command": "chef-client",
   "run_timeout": 300,
@@ -288,7 +287,7 @@ with a request body similar to:
 
 The response is similar to:
 
-``` javascript
+```javascript
 {
   "id": "aaaaaaaaaaaa25fd67fa8715fd547d3d"
 }
@@ -346,13 +345,13 @@ This method has no parameters.
 
 **Request**
 
-``` xml
+```xml
 POST /organizations/ORG_NAME/pushy/jobs
 ```
 
 with a request body similar to:
 
-``` javascript
+```javascript
 {
   "command": "chef-client",
   "run_timeout": 300,
@@ -364,7 +363,7 @@ with a request body similar to:
 
 The response is similar to:
 
-``` javascript
+```javascript
 {
   "id": "aaaaaaaaaaaa25fd67fa8715fd547d3d"
 }
@@ -407,7 +406,7 @@ The response is similar to:
 
 **Request**
 
-``` xml
+```xml
 GET /organizations/ORG_NAME/pushy/jobs/ID
 ```
 
@@ -415,7 +414,7 @@ GET /organizations/ORG_NAME/pushy/jobs/ID
 
 The response will return something similar to:
 
-``` javascript
+```javascript
 {
   "id": "aaaaaaaaaaaa25fd67fa8715fd547d3d",
   "command": "chef-client",
@@ -537,7 +536,7 @@ This command has the following options:
 
 `-N NODE_NAME`, `--node-name NODE_NAME`
 
-:   The name of the node.
+:   The unique identifier of the node.
 
 `-S URL`, `--server URL`
 

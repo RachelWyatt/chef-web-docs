@@ -1,6 +1,8 @@
 +++
 title = "Configure Data Collection"
 draft = false
+
+gh_repo = "chef-web-docs"
 robots = "noindex"
 
 
@@ -13,10 +15,6 @@ aliases = ["/data_collection.html", "/ingest_data_chef_automate.html", "/release
     parent = "legacy/workflow/workflow_basics"
     weight = 40
 +++
-
-[\[edit on GitHub\]](https://github.com/chef/chef-web-docs/blob/master/content/data_collection.md)
-
-
 
 {{% chef_automate_mark %}}
 
@@ -61,14 +59,14 @@ best results.
 To set your own token, add the following to your
 `/etc/delivery/delivery.rb` file:
 
-``` ruby
+```ruby
 data_collector['token'] = 'sometokenvalue'
 # Save and close the file
 ```
 
 To apply the changes, run:
 
-``` shell
+```shell
 sudo automate-ctl reconfigure
 ```
 
@@ -92,7 +90,7 @@ performance and reduces disk space requirements.
 
 {{< /warning >}}
 
-``` shell
+```shell
 ohai.disabled_plugins = [ :Passwd, :Sessions ]
 ```
 
@@ -104,7 +102,7 @@ Channel the token setting through the veil secrets library because the
 token is considered a secret, and cannot appear in
 `/etc/opscode/chef-server.rb`:
 
-``` shell
+```shell
 sudo chef-server-ctl set-secret data_collector token 'TOKEN'
 sudo chef-server-ctl restart nginx
 sudo chef-server-ctl restart opscode-erchef
@@ -113,7 +111,7 @@ sudo chef-server-ctl restart opscode-erchef
 Then add the following setting to `/etc/opscode/chef-server.rb` on the
 Chef Infra Server:
 
-``` ruby
+```ruby
 data_collector['root_url'] = 'https://my-automate-server.mycompany.com/data-collector/v0/'
 # Add for compliance scanning
 profiles['root_url'] = 'https://my-automate-server.mycompany.com'
@@ -122,7 +120,7 @@ profiles['root_url'] = 'https://my-automate-server.mycompany.com'
 
 To apply the changes, run:
 
-``` ruby
+```ruby
 chef-server-ctl reconfigure
 ```
 
@@ -134,7 +132,7 @@ name of your Chef Automate server.
 On versions 12.13 and prior, simply add the `'root_url'` and `token`
 values in `/etc/opscode/chef-server.rb`:
 
-``` ruby
+```ruby
 data_collector['root_url'] = 'https://my-automate-server.mycompany.com/data-collector/v0/'
 data_collector['token'] = 'TOKEN'
 # Add for compliance scanning
@@ -144,7 +142,7 @@ profiles['root_url'] = 'https://my-automate-server.mycompany.com'
 
 To apply the changes, run:
 
-``` ruby
+```ruby
 chef-server-ctl reconfigure
 ```
 
@@ -231,13 +229,13 @@ more information, see
 To utilize an external Elasticsearch installation, set the following
 configuration option in your `/etc/delivery/delivery.rb`:
 
-``` ruby
+```ruby
 elasticsearch['urls'] = ['https://my-elasticsearch-cluster.mycompany.com']
 ```
 
 Or for a three node on premise install
 
-``` ruby
+```ruby
 elasticsearch['urls'] = ['http://172.16.0.100:9200', 'http://172.16.0.101:9200', 'http://172.16.0.100:9202']
 ```
 

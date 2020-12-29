@@ -2,22 +2,25 @@
 title = "Site Map"
 draft = false
 
+gh_repo = "chef-web-docs"
+
 toc = false
 
 +++
 
-[\[edit on GitHub\]](https://github.com/chef/chef-web-docs/blob/master/content/sitemap.md)
-
 This is the documentation for:
 
--   Chef Infra Server, Chef Infra Client, Chef Workstation, and related
-    tools
+-   Chef Automate
+-   Chef Desktop
+-   Chef Infra Client
+-   Chef Infra Server
+-   Chef InSpec
+-   Chef Workstation
+-   related tools
 
 Documentation for other Chef products:
 
--   [Chef Automate 2.0](https://automate.chef.io/docs/quickstart)
 -   [Chef Habitat](https://www.habitat.sh/docs/)
--   [Chef InSpec](https://www.inspec.io/docs/)
 
 This page has links to each topic in this doc set. You can also use the
 navigation tool or the search box to find what you're looking for.

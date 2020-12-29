@@ -1,13 +1,13 @@
 +++
 title = "Deprecation: Deprecation of run_command (CHEF-14)"
 draft = false
+
+gh_repo = "chef-web-docs"
 robots = "noindex"
 
 
 aliases = "/deprecations_run_command.html"
 +++
-
-[\[edit on GitHub\]](https://github.com/chef/chef-web-docs/blob/master/content/deprecations_run_command.md)
 
 The old run_command API has been replaced by shell_out (a wrapper
 around Mixlib::ShellOut).
@@ -20,14 +20,14 @@ run_command will be removed permanently in Chef Client 13.
 Previously to run a command from Chef Infra Client code you might have
 written:
 
-``` ruby
-run_command(:command => "/sbin/ifconfig eth0")
+```ruby
+run_command(command: '/sbin/ifconfig eth0')
 ```
 
 ## Remediation
 
 You now need to use shell_out! instead:
 
-``` ruby
-shell_out!("/sbin/ifconfig eth0")
+```ruby
+shell_out!('/sbin/ifconfig eth0')
 ```

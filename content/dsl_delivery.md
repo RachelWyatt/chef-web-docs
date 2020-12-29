@@ -1,6 +1,8 @@
 +++
 title = "About the Workflow DSL"
 draft = false
+
+gh_repo = "chef-web-docs"
 robots = "noindex"
 
 
@@ -13,10 +15,6 @@ aliases = ["/dsl_delivery.html", "/release/automate/dsl_delivery.html"]
     parent = "legacy/workflow/reference"
     weight = 40
 +++
-
-[\[edit on GitHub\]](https://github.com/chef/chef-web-docs/blob/master/content/dsl_delivery.md)
-
-
 
 The Workflow DSL is a collection of helper methods that is used in
 recipes as a way to enhance the Recipe DSL to collect data about:
@@ -47,7 +45,7 @@ The following Chef Automate-specific helpers can be used in recipes:
 :   Determine if files in a cookbook have been modified, and then to
     ensure that a cookbook's version is updated in its metadata.rb file.
     The Verify phase will fail if files in a cookbook are modified
-    without a corresponding vesrion bump to the metadata.rb file.
+    without a corresponding version bump to the metadata.rb file.
 
 `changed_cookbooks`
 
@@ -86,7 +84,7 @@ The following Chef Automate-specific helpers can be used in recipes:
 
     If the `config.json` file specifies:
 
-    ``` javascript
+    ```javascript
     "delivery-truck": {
       "deploy": {
         "search": "SEARCH_QUERY"
@@ -97,7 +95,7 @@ The following Chef Automate-specific helpers can be used in recipes:
     then the search is run against all node objects on the Chef Infra
     Server. For example:
 
-    ``` javascript
+    ```javascript
     "delivery-truck": {
       "deploy": {
         "search": "role:load_balancer"
@@ -144,7 +142,7 @@ The following Chef Automate-specific helpers can be used in recipes:
     `get_project_application` method is called directly in
     `provision.rb`:
 
-    ``` ruby
+    ```ruby
     include_recipe 'delivery-truck::provision'
     get_project_application(<project_app_name_string>)
     ```
@@ -353,7 +351,7 @@ The following examples show how to use the Workflow DSL in a cookbook:
 
 **changed_cookbooks**
 
-``` ruby
+```ruby
 changed_cookbooks.each do |cookbook|
   execute "unit_rspec_#{cookbook[:name]}" do
     cwd cookbook[:path]
@@ -365,7 +363,7 @@ end
 
 **bumped_version?**
 
-``` ruby
+```ruby
 changed_cookbooks.each do |cookbook|
   unless bumped_version?(cookbook[:path])
     raise DeliveryTruck::Error, "The #{cookbook[:name]} cookbook was modified " \
@@ -381,7 +379,7 @@ end
 
 **push_repo_to_github?**
 
-``` ruby
+```ruby
 if push_repo_to_github?
   git_ssh = File.join(node['delivery']['workspace']['cache'], 'git_ssh')
   deploy_key = File.join(node['delivery']['workspace']['cache'], 'github.pem')

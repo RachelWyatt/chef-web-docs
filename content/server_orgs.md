@@ -2,6 +2,8 @@
 title = "Organizations and Groups"
 draft = false
 
+gh_repo = "chef-web-docs"
+
 aliases = ["/server_orgs.html", "/auth_authorization.html"]
 
 [menu]
@@ -11,8 +13,6 @@ aliases = ["/server_orgs.html", "/auth_authorization.html"]
     parent = "chef_infra/managing_chef_infra_server"
     weight = 80
 +++
-
-[\[edit on GitHub\]](https://github.com/chef/chef-web-docs/blob/master/content/server_orgs.md)
 
 {{% server_rbac %}}
 
@@ -147,7 +147,7 @@ Keys should have `DELETE`, `GRANT`, `READ` and `UPDATE` permissions.
 
 Use the following code to set the correct permissions:
 
-``` ruby
+```ruby
 #!/usr/bin/env ruby
 require 'chef/knife'
 
@@ -157,7 +157,7 @@ Chef::Config.from_file(File.join(Chef::Knife.chef_config_dir, 'knife.rb'))
 rest = Chef::ServerAPI.new(Chef::Config[:chef_server_url])
 
 Chef::Node.list.each do |node|
-  %w{read update delete grant}.each do |perm|
+  %w(read update delete grant).each do |perm|
     ace = rest.get("nodes/#{node[0]}/_acl")[perm]
     ace['actors'] << node[0] unless ace['actors'].include?(node[0])
     rest.put("nodes/#{node[0]}/_acl/#{perm}", perm => ace)
@@ -170,7 +170,7 @@ Save it as a Ruby script---`chef_server_permissions.rb`, for
 example---in the `.chef/scripts` directory located in the chef-repo, and
 then run a knife command similar to:
 
-``` bash
+```bash
 knife exec chef_server_permissions.rb
 ```
 
@@ -291,6 +291,12 @@ The `admins` group is assigned the following:
 </tr>
 </tbody>
 </table>
+
+#### billing_admins
+
+The `billing_admins` group is assigned the following:
+
+
 
 #### billing_admins
 
@@ -485,6 +491,12 @@ By default, the `public_key_read_access` assigns all members of the
 </tr>
 </tbody>
 </table>
+
+#### users
+
+The `users` group is assigned the following:
+
+
 
 #### users
 

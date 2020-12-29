@@ -2,6 +2,8 @@
 title = "Working with Proxies"
 draft = false
 
+gh_repo = "chef-web-docs"
+
 aliases = ["/proxies.html"]
 
 [menu]
@@ -11,8 +13,6 @@ aliases = ["/proxies.html"]
     parent = "chef_infra/setup"
     weight = 30
 +++
-
-[\[edit on GitHub\]](https://github.com/chef/chef-web-docs/blob/master/content/proxies.md)
 
 In an environment that requires proxies to reach the Internet, many Chef
 commands will not work until they are configured correctly. To configure
@@ -29,7 +29,7 @@ variables to specify the proxy settings using a lowercase value.
 To determine the current proxy server on the macOS and Linux platforms,
 check the environment variables. Run the following:
 
-``` bash
+```bash
 env | grep -i http_proxy
 ```
 
@@ -39,19 +39,19 @@ not, add a lowercase version of that proxy variable to the shell (e.g.
 
 For HTTP:
 
-``` bash
+```bash
 export http_proxy=http://myproxy.com:3168
 ```
 
 For HTTPS:
 
-``` bash
+```bash
 export https_proxy=http://myproxy.com:3168
 ```
 
 For FTP:
 
-``` bash
+```bash
 export ftp_proxy=ftp://myproxy.com:3168
 ```
 
@@ -164,7 +164,7 @@ list of addresses.
 
 Example:
 
-``` ruby
+```ruby
 no_proxy 'test.example.com,test.example2.com,test.example3.com'
 ```
 

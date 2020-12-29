@@ -2,6 +2,8 @@
 title = "Chef Infra Client Security"
 draft = false
 
+gh_repo = "chef-web-docs"
+
 aliases = ["/chef_client_security.html"]
 
 [menu]
@@ -11,8 +13,6 @@ aliases = ["/chef_client_security.html"]
     parent = "chef_infra/setup/nodes"
     weight = 60
 +++
-
-[\[edit on GitHub\]](https://github.com/chef/chef-web-docs/blob/master/content/chef_client_security.md)
 
 {{% chef_auth %}}
 
@@ -40,7 +40,7 @@ used to determine the authentication protocol that communicates with
 Chef Infra Server. For example, specify protocol version 1.3 to enable
 support for SHA-256 algorithms:
 
-``` ruby
+```ruby
 knife[:authentication_protocol_version] = '1.3'
 ```
 
@@ -159,7 +159,7 @@ operations from that workstation will use the certificate in the
 #### knife ssl check
 
 Run the `knife ssl check` subcommand to verify the state of the SSL
-certificate, and then use the reponse to help troubleshoot issues that
+certificate, and then use the response to help troubleshoot issues that
 may be present.
 
 **Verified**

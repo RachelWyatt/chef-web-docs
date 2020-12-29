@@ -2,6 +2,8 @@
 title = "About Chef Licenses"
 draft = false
 
+gh_repo = "chef-web-docs"
+
 aliases = ["/chef_license.html"]
 
 [menu]
@@ -11,8 +13,6 @@ aliases = ["/chef_license.html"]
     parent = "overview/packages_&_platforms/licensing"
     weight = 10
 +++
-
-[\[edit on GitHub\]](https://github.com/chef/chef-web-docs/blob/master/content/chef_license.md)
 
 All Chef products have a license that governs the entire product, while
 some have separate licenses for the project source code and the
@@ -31,7 +31,7 @@ information about this change can be found in our
 ## Chef EULA
 
 The commercial distributions of our products---such as Chef Infra
-Client, Chef Habitat, or Chef InSpec--- are goverened by either the
+Client, Chef Habitat, or Chef InSpec--- are governed by either the
 [Chef End User License Agreement (Chef
 EULA)](https://www.chef.io/end-user-license-agreement/) or your
 commercial agreement with Chef Software, Inc. as a customer. You are

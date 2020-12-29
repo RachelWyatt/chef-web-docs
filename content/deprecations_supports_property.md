@@ -1,13 +1,13 @@
 +++
 title = "Deprecation: Supports metaproperty (CHEF-8)"
 draft = false
+
+gh_repo = "chef-web-docs"
 robots = "noindex"
 
 
 aliases = "/deprecations_supports_property.html"
 +++
-
-[\[edit on GitHub\]](https://github.com/chef/chef-web-docs/blob/master/content/deprecations_supports_property.md)
 
 The `user` resource previously allowed a cookbook author to set policy
 for the resource in two ways. The `supports` metaproperty, which is now
@@ -19,11 +19,11 @@ be removed in Chef Client 13.
 
 ## Example
 
-``` ruby
-user "betty" do
+```ruby
+user 'betty' do
   supports({
     manage_home: true,
-    non_unique: true
+    non_unique: true,
   })
 end
 ```
@@ -33,8 +33,8 @@ end
 Make the `manage_home` and `non_unique` settings properties rather than
 parts of the `supports` hash.
 
-``` ruby
-user "betty" do
+```ruby
+user 'betty' do
   manage_home true
   non_unique true
 end

@@ -1,12 +1,12 @@
 +++
 title = "Deprecation: Deprecation of lc_all from locale resource (CHEF-27)"
 draft = false
+
+gh_repo = "chef-web-docs"
 robots = "noindex"
 
 aliases = "/deprecations_locale_lc_all.html"
 +++
-
-[\[edit on GitHub\]](https://github.com/chef/chef-web-docs/blob/master/content/deprecations_locale_lc_all.md)
 
 Setting the `LC_ALL` variable is NOT recommended. As a system-wide
 setting, `LANG` should provide the desired behavior. `LC_ALL` is
@@ -25,20 +25,20 @@ has been introduced to detect and autocorrect this deprecation.
 
 Set `LC_ALL` in current shell as:
 
-``` bash
+```bash
 export LC_ALL="<locale_name>"
 ```
 
 To check the `locale` value, run:
 
-``` bash
+```bash
 locale -v
 ```
 
 You can also use **file** Resource and add this variable in any other
 file of your choice and then can source that file to reflect changes.
 
-``` ruby
+```ruby
 file "<path_to_file>" do
   content "LC_ALL=<locale_name>"
 end

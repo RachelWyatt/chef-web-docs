@@ -2,6 +2,8 @@
 title = "Supported Versions"
 draft = false
 
+gh_repo = "chef-web-docs"
+
 aliases = ["/versions.html"]
 
 [menu]
@@ -11,8 +13,6 @@ aliases = ["/versions.html"]
     parent = "overview/packages_&_platforms"
     weight = 30
 +++
-
-[\[edit on GitHub\]](https://github.com/chef/chef-web-docs/blob/master/content/versions.md)
 
 This section lists the free and commercial Chef products and versions we
 currently support. The lifecycle stage defines the involvement by Chef
@@ -89,7 +89,7 @@ announcement](https://blog.chef.io/2019/04/02/chef-software-announces-the-enterp
 <tbody>
 <tr class="odd">
 <td>Chef Automate</td>
-<td>2</td>
+<td>Latest</td>
 <td>GA</td>
 <td>n/a</td>
 </tr>
@@ -112,20 +112,26 @@ announcement](https://blog.chef.io/2019/04/02/chef-software-announces-the-enterp
 <td>n/a</td>
 </tr>
 <tr class="odd">
+<td>Chef Infra Server</td>
+<td>14.x</td>
+<td>GA</td>
+<td>n/a</td>
+</tr>
+<tr class="even">
 <td>Chef Habitat</td>
 <td>0.81+</td>
 <td>GA</td>
 <td>n/a</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>Chef InSpec</td>
 <td>4.x</td>
 <td>GA</td>
 <td>n/a</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>Chef Workstation</td>
-<td>20.6+ (June 2020)</td>
+<td>20.x (2020)</td>
 <td>GA</td>
 <td>n/a</td>
 </tr>

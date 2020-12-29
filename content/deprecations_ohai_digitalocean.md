@@ -1,13 +1,13 @@
 +++
 title = "Deprecation: DigitalOcean plugin attribute changes (OHAI-6)"
 draft = false
+
+gh_repo = "chef-web-docs"
 robots = "noindex"
 
 
 aliases = "/deprecations_ohai_digitalocean.html"
 +++
-
-[\[edit on GitHub\]](https://github.com/chef/chef-web-docs/blob/master/content/deprecations_ohai_digitalocean.md)
 
 Ohai's previous Digital Ocean plugin relied on hint data passed to Ohai
 as well and the drop's internal network interface configuration. The
@@ -25,7 +25,7 @@ Update cookbooks to use the new network data format as seen below.
 
 Example of previous data format:
 
-``` json
+```json
 {
   "networks": {
     "v4": [
@@ -58,7 +58,7 @@ Example of previous data format:
 
 Example of new data format:
 
-``` json
+```json
 {
   "droplet_id": 12345678,
   "hostname": "mytestnode",

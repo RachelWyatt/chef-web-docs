@@ -2,6 +2,8 @@
 title = "System Requirements"
 draft = false
 
+gh_repo = "chef-web-docs"
+
 aliases = ["/chef_system_requirements.html"]
 
 [menu]
@@ -11,8 +13,6 @@ aliases = ["/chef_system_requirements.html"]
     parent = "chef_infra/getting_started"
     weight = 30
 +++
-
-[\[edit on GitHub\]](https://github.com/chef/chef-web-docs/blob/master/content/chef_system_requirements.md)
 
 Before installing Chef Infra:
 
@@ -54,6 +54,9 @@ The hosted Chef Infra Server has the following requirements:
     directory, which requires a minimum of 200MB of disk space. On
     Windows, the Chef Infra Client binaries can be found in
     `C:\opscode\`, and they require a minimum of 600MB of disk space.
+-   The processor must be [supported](/platforms/). We recommend
+    a 1 gigahertz (GHz) or faster processor, but the processor speed
+    should be based on the other system loads.
 -   Chef Infra Client caches to `/var/chef/cache` during a Chef Infra
     Client run. This is the location in which downloaded cookbooks,
     packages required by those cookbooks, and other large files are

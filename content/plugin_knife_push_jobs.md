@@ -2,17 +2,16 @@
 title = "knife push jobs"
 draft = false
 
+gh_repo = "chef-web-docs"
+
 aliases = ["/plugin_knife_push_jobs.html"]
 
 [menu]
-  [menu.infra]
+  [menu.legacy]
     title = "knife push jobs"
-    identifier = "chef_infra/managing_chef_infra_server/push_jobs/plugin_knife_push_jobs.md knife push jobs"
-    parent = "chef_infra/managing_chef_infra_server/push_jobs"
-    weight = 10
+    identifier = "legacy/push_jobs/plugin_knife_push_jobs.md knife push jobs"
+    parent = "legacy/push_jobs"
 +++
-
-[\[edit on GitHub\]](https://github.com/chef/chef-web-docs/blob/master/content/plugin_knife_push_jobs.md)
 
 {{% plugin_knife_push_jobs_summary %}}
 
@@ -45,7 +44,7 @@ output capture flag must have been set on `job start`; see the
 
 This argument has the following syntax:
 
-``` bash
+```bash
 knife job output (options) JOB_ID [NODE_NAME]
 ```
 
@@ -62,7 +61,7 @@ This argument has the following options:
 **View the STDOUT from my-node for job with ID
 26e98ba162fa7ba6fb2793125553c7ae**
 
-``` bash
+```bash
 knife job output --channel stdout 26e98ba162fa7ba6fb2793125553c7ae my-node
 ```
 

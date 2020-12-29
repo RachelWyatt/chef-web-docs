@@ -2,6 +2,8 @@
 title = "About Cookbooks"
 draft = false
 
+gh_repo = "chef-web-docs"
+
 aliases = ["/cookbooks.html"]
 
 [menu]
@@ -11,8 +13,6 @@ aliases = ["/cookbooks.html"]
     parent = "chef_infra/cookbook_reference"
     weight = 10
 +++
-
-[\[edit on GitHub\]](https://github.com/chef/chef-web-docs/blob/master/content/cookbooks.md)
 
 {{% cookbooks_summary %}}
 
@@ -51,12 +51,12 @@ files or directories.
 <tr class="odd">
 <td><a href="/recipes/">Recipes</a></td>
 <td>recipes/</td>
-<td>{{% cookbooks_recipe %}}</td>
+<td>{{< readFile_shortcode file="cookbooks_recipe.md" >}}</td>
 </tr>
 <tr class="even">
 <td><a href="/attributes/">Attributes</a></td>
 <td>attributes/</td>
-<td>{{% cookbooks_attribute %}}</td>
+<td>{{< readFile_shortcode file="cookbooks_attribute.md" >}}</td>
 </tr>
 <tr class="odd">
 <td><a href="/files/">Files</a></td>

@@ -1,3 +1,6 @@
-# github.com/chef/desktop-config/docs v0.0.0-20200610165450-c19114b2ac44
-# github.com/chef/chef-workstation/www v0.0.0-20200701033642-7981ec75eee8
-# github.com/chef/effortless/effortless-chef-io v0.0.0-20200605204203-daaeab90dcdd
+# github.com/chef/desktop-config/docs-chef-io v0.0.0-20200929171526-d4cef8a736df
+# github.com/chef/chef-workstation/docs-chef-io v0.0.0-20201214222712-7749446a76af
+# github.com/chef/effortless/docs-chef-io v0.0.0-20200930175149-51c187882fba
+# github.com/inspec/inspec/docs-chef-io v0.0.0-20201209191123-eefd96d86745
+# github.com/chef/automate/components/docs-chef-io v0.0.0-20201127101112-09cd0615d05f
+# github.com/habitat-sh/habitat/components/docs-chef-io v0.0.0-20201105224549-ce890e79d550

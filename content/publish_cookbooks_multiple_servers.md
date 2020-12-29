@@ -1,6 +1,8 @@
 +++
 title = "Publish Cookbooks to Multiple Chef Infra Servers"
 draft = false
+
+gh_repo = "chef-web-docs"
 robots = "noindex"
 
 
@@ -13,8 +15,6 @@ aliases = ["/publish_cookbooks_multiple_servers.html"]
     parent = "legacy/workflow/managing_workflow"
     weight = 50
 +++
-
-[\[edit on GitHub\]](https://github.com/chef/chef-web-docs/blob/master/content/publish_cookbooks_multiple_servers.md)
 
 {{% chef_automate_mark %}}
 
@@ -39,7 +39,7 @@ points to the Chef Infra Server `chef-test-server.example.com` and the
 organization `your_org`. The `test.pem` file is the value specified in
 the `client_key` setting.
 
-``` ruby
+```ruby
 current_dir = File.dirname(__FILE__)
 log_location      STDOUT
 node_name         'test'
@@ -57,7 +57,7 @@ that you copied to your build node/runner.
 This example shows how to publish a cookbook called `rally` to a single
 Chef Infra Server.
 
-``` ruby
+```ruby
 knife_rb = '/path/to/the/knife_rb/file/in/the/build-node/config.rb'
 
 delivery_chef_cookbook 'rally' do
@@ -91,7 +91,7 @@ end of the workflow pipeline, in the **Functional** phase of the
 recipe (`recipes/functional.rb`) of the `build-cookbook` within your
 project, as shown below.
 
-``` ruby
+```ruby
 # Run it only in Delivered::Functional
 #
 # This helper is coming from delivery-sugar

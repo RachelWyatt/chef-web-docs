@@ -1,6 +1,8 @@
 +++
 title = "Deprecation: Chef Gem Compile Time (CHEF-3)"
 draft = false
+
+gh_repo = "chef-web-docs"
 robots = "noindex"
 
 
@@ -9,8 +11,6 @@ aliases = "/deprecations_chef_gem_compile_time.html"
 
 
 +++
-
-[\[edit on GitHub\]](https://github.com/chef/chef-web-docs/blob/master/content/deprecations_chef_gem_compile_time.md)
 
 Originally, the [chef gem](/resources/chef_gem/) resource always ran
 during the <span class="title-ref">compile</span> phase (see this
@@ -31,8 +31,8 @@ The first is to set the `compile_time` property on the resource. To
 maintain the same behavior as before, the property should be set to
 `true`:
 
-``` ruby
-chef_gem "etcd" do
+```ruby
+chef_gem 'etcd' do
   compile_time true
 end
 ```
@@ -40,6 +40,6 @@ end
 The second, and preferred, is to add a [gem
 dependency](/config_rb_metadata/) in your cookbook metadata.
 
-``` ruby
-gem "etcd"
+```ruby
+gem 'etcd'
 ```

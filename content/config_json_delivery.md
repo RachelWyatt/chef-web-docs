@@ -1,6 +1,8 @@
 +++
 title = "Configure a Project through config.json"
 draft = false
+
+gh_repo = "chef-web-docs"
 robots = "noindex"
 
 
@@ -14,8 +16,6 @@ aliases = ["/config_json_delivery.html", "/release/automate/config_json_delivery
     weight = 30
 +++
 
-[\[edit on GitHub\]](https://github.com/chef/chef-web-docs/blob/master/content/config_json_delivery.md)
-
 {{% chef_automate_mark %}}
 
 {{% EOL_a1 %}}
@@ -28,7 +28,7 @@ project to publish to a pipeline.
 
 The structure of the `config.json` file is similar to:
 
-``` json
+```json
 {
   "version": "2",
   "build_cookbook": {
@@ -58,13 +58,13 @@ The structure of the `config.json` file is similar to:
 
 :   **Required**
 
-    {{< shortcode_indent shortcode="delivery_config_json_setting_build_cookbook" >}}
+    {{< readFile_shortcode file="delivery_config_json_setting_build_cookbook.md" >}}
 
 `build_nodes`
 
 :   **Optional**
 
-    {{< shortcode_indent shortcode="delivery_config_json_setting_build_nodes" >}}
+    {{< readFile_shortcode file="delivery_config_json_setting_build_nodes.md" >}}
 
 `delivery-truck`
 
@@ -73,7 +73,7 @@ The structure of the `config.json` file is similar to:
     The `delivery-truck` setting specifies configurations for specific
     phases of the Chef Automate pipeline:
 
-    ``` javascript
+    ```javascript
     "delivery-truck": {
       "lint": {
         "foodcritic": {
@@ -97,7 +97,7 @@ The structure of the `config.json` file is similar to:
 
 :   **Optional**
 
-    {{< shortcode_indent shortcode="delivery_config_json_setting_dependencies" >}}
+    {{< readFile_shortcode file="delivery_config_json_setting_dependencies.md" >}}
 
 <a id="job-dispatch-config-settings" markdown="1"></a>
 <!-- link from runners.md -->
@@ -113,7 +113,7 @@ The structure of the `config.json` file is similar to:
     -   `"version"` Set the value to "v2" if you wish to use runners and
         the new job dispatch system:
 
-        ``` javascript
+        ```javascript
         {
            ...
            "job_dispatch": {
@@ -147,7 +147,7 @@ The structure of the `config.json` file is similar to:
         project phase jobs to be executed on only ubuntu and centos
         platforms, you could write:
 
-        ``` javascript
+        ```javascript
         {
            ...
            "job_dispatch": {
@@ -171,7 +171,7 @@ The structure of the `config.json` file is similar to:
         Fedora 6 based systems that overrides a default of Windows, you
         could write:
 
-        ``` javascript
+        ```javascript
         {
            ...
            "job_dispatch": {
@@ -200,7 +200,7 @@ The structure of the `config.json` file is similar to:
         For example, if you want to unit test your project across
         multiple versions of Ubuntu, you could write something like:
 
-        ``` javascript
+        ```javascript
         {
            ...
            "job_dispatch": {
@@ -230,14 +230,14 @@ The structure of the `config.json` file is similar to:
 
 :   **Optional**
 
-    {{< shortcode_indent shortcode="delivery_config_json_setting_skip_phases" >}}
+    {{< readFile_shortcode file="delivery_config_json_setting_skip_phases.md" >}}
 
 
 `version`
 
 :   **Required**
 
-    {{< shortcode_indent shortcode="delivery_config_json_setting_version" >}}
+    {{< readFile_shortcode file="delivery_config_json_setting_version.md" >}}
 
 {{< note >}}
 
@@ -290,7 +290,7 @@ user, and when it prompts you to enable the user for Supermarket, enter
 If the `config.json` file may specify some or all of the publish options
 together as a single block:
 
-``` javascript
+```javascript
 "delivery-truck":{
   "publish": {
     "chef_server": "true"
@@ -304,7 +304,7 @@ together as a single block:
 
 or:
 
-``` javascript
+```javascript
 "delivery-truck":{
   "publish": {
     "chef_server": "true"
@@ -360,7 +360,7 @@ The following examples show how to specify the location of the
 The `"build_nodes"` section may also specify build nodes by stages
 and/or platform:
 
-``` javascript
+```javascript
 {
   ...
     "build_nodes": {
@@ -374,7 +374,7 @@ and/or platform:
 
 For example:
 
-``` javascript
+```javascript
 {
   ...
     "build_nodes": {

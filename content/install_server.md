@@ -2,6 +2,8 @@
 title = "Install the Chef Infra Server"
 draft = false
 
+gh_repo = "chef-web-docs"
+
 aliases = ["/install_server.html"]
 
 [menu]
@@ -11,8 +13,6 @@ aliases = ["/install_server.html"]
     parent = "chef_infra/setup/chef_infra_server"
     weight = 20
 +++
-
-[\[edit on GitHub\]](https://github.com/chef/chef-web-docs/blob/master/content/install_server.md)
 
 There are three configuration scenarios for the Chef Infra Server:
 
@@ -77,11 +77,11 @@ To install Chef Server:
     Server, and then record its location on the file system. The rest of
     these steps assume this location is in the `/tmp` directory.
 
-3.  {{< shortcode_indent shortcode="install_chef_server_install_package" >}}
+3.  {{< readFile_shortcode file="install_chef_server_install_package.md" >}}
 
 4.  Run the following to start all of the services:
 
-    ``` bash
+    ```bash
     sudo chef-server-ctl reconfigure
     ```
 
@@ -89,9 +89,9 @@ To install Chef Server:
     that work together to create a functioning system, this step may
     take a few minutes to complete.
 
-5.  {{< shortcode_indent shortcode="ctl_chef_server_user_create_admin" >}}
+5.  {{< readFile_shortcode file="ctl_chef_server_user_create_admin.md" >}}
 
-6.  {{< shortcode_indent shortcode="ctl_chef_server_org_create_summary" >}}
+6.  {{< readFile_shortcode file="ctl_chef_server_org_create_summary.md" >}}
 
 ## Update Configuration for Purchased Nodes
 
@@ -102,14 +102,14 @@ your `/etc/opscode/chef-server.rb` file by following the process below:
 1.  On your Chef Infra Server, if the `chef-server.rb` file does not
     exist, create it.
 
-    ``` bash
+    ```bash
     sudo mkdir /etc/opscode && sudo touch /etc/opscode/chef-server.rb
     ```
 
 2.  Open up the newly created `chef-server.rb` file in your favorite
     text editor, for example:
 
-    ``` bash
+    ```bash
     sudo vi /etc/opscode/chef-server.rb
     ```
 
@@ -118,27 +118,27 @@ your `/etc/opscode/chef-server.rb` file by following the process below:
     you'll need to use the <span class="title-ref">i</span> key to
     insert the text.
 
-    ``` bash
+    ```bash
     license['nodes'] = N where N is the number of licensed nodes you have purchased
     ```
 
 4.  Save the file. If you're using vi, from the example above, use the
     <span class="title-ref">esc</span> key and then:
 
-    ``` bash
+    ```bash
     :wq
     ```
 
 5.  Run `chef-server-ctl reconfigure` for the changes to be picked up by
     your Chef Infra Server.
 
-    ``` bash
+    ```bash
     sudo chef-server-ctl reconfigure
     ```
 
 For more information on configuring your Chef Infra Server, see
-[chef-server.rb Settings](/config_rb_server/) and [chef-server.rb
-Optional Settings](/config_rb_server_optional_settings/).
+[chef-server.rb Settings](/server/config_rb_server/) and [chef-server.rb
+Optional Settings](/server/config_rb_server_optional_settings/).
 
 ## High Availability
 
