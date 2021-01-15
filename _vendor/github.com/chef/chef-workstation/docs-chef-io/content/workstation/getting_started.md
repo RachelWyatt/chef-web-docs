@@ -138,55 +138,6 @@ Workstation machine.
 
 ## Configure the Chef Repository
 
-### With WebUI
-
-Use the following steps to manually set up the chef-repo and to use the
-Chef management console to get the `.pem` and `config.rb` files.
-
-#### Get Config Files
-
-For a Chef Workstation installation that will interact with the Chef
-Infra Server (including the hosted Chef Infra Server), log on and
-download the following files:
-
--   `config.rb`. This configuration file can be downloaded from the
-    **Organizations** page.
--   `ORGANIZATION-validator.pem`. This private key can be downloaded
-    from the **Organizations** page.
--   `USER.pem`. This private key can be downloaded from the **Change
-    Password** section of the **Account Management** page.
-
-#### Move Config Files
-
-The `config.rb`, `ORGANIZATION-validator.pem`, and `USER.pem` files must
-be moved to the `.chef` directory after they are downloaded from the
-Chef Infra Server.
-
-To move files to the `.chef` directory:
-
-1.  In a command window, enter each of the following:
-
-    ``` bash
-    cp /path/to/config.rb ~/chef-repo/.chef
-    ```
-
-    and:
-
-    ``` bash
-    cp /path/to/ORGANIZATION-validator.pem ~/chef-repo/.chef
-    ```
-
-    and:
-
-    ``` bash
-    cp /path/to/USERNAME.pem ~/chef-repo/.chef
-    ```
-
-    where `/path/to/` represents the path to the location in which these
-    three files were placed after they were downloaded.
-
-2.  Verify that the files are in the `.chef` folder.
-
 ### Without WebUI
 
 Use the following steps to manually set up the Chef repository: On your
